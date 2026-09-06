@@ -15,17 +15,19 @@ export default function ProjectGallery() {
         initial={{ opacity: 0, y: 30 }}
         animate={isHeaderInView ? { opacity: 1, y: 0 } : {}}
         transition={{ duration: 0.6 }}
-        className="mb-16 md:mb-24"
+        className="mb-16 md:mb-24 grid grid-cols-1 md:grid-cols-12 gap-6 items-end"
       >
-        <span className="font-mono text-xs tracking-widest uppercase text-muted-foreground block mb-4">
-          Selected Works
-        </span>
-        <h2 className="font-body text-4xl md:text-6xl font-light tracking-tight text-foreground max-w-[60%]">
-          Selected projects that define <span>my design perspective</span>
+        <div className="md:col-span-3">
+          <span className="font-mono text-[10px] md:text-xs tracking-[0.18em] uppercase text-muted-foreground block">
+            Selected works / 02
+          </span>
+        </div>
+        <h2 className="md:col-span-9 font-display text-[13vw] sm:text-[10vw] md:text-[7.5vw] leading-[0.84] tracking-[-0.04em] text-foreground">
+          Work with a <span className="italic">point of view.</span>
         </h2>
       </motion.div>
 
-      <div className="space-y-20 md:space-y-32">
+      <div className="space-y-24 md:space-y-40">
         {projects.slice(0, 3).map((project, index) => (
           <ProjectCard key={project.id} project={project} index={index} />
         ))}
