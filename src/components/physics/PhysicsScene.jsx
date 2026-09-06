@@ -199,8 +199,8 @@ export default function PhysicsScene({
       map[img.src] = new THREE.ShaderMaterial({
         uniforms: {
           map: { value: texBySrc[img.src] },
-          cutoff: { value: 0.9 },
-          soft: { value: 0.09 },
+          cutoff: { value: 0.925 },
+          soft: { value: 0.055 },
         },
         vertexShader: KNOCKOUT_VERT,
         fragmentShader: KNOCKOUT_FRAG,
@@ -231,7 +231,7 @@ export default function PhysicsScene({
         : 1;
       const scale = img.scale ?? 1;
       const weight = img.weight ?? 1;
-      const oh = height * (0.1 + 0.07 * rnd(i, 1)) * scale;
+      const oh = height * (0.125 + 0.075 * rnd(i, 1)) * scale;
       let ow = oh * aspect;
       if (ow > width * 0.42) {
         const k = (width * 0.42) / ow;
@@ -255,10 +255,10 @@ export default function PhysicsScene({
         wz = 0;
       } else {
         y = height * (0.32 + 0.62 * rnd(i, 3));
-        rot = (rnd(i, 4) - 0.5) * 1.4;
-        vx = (rnd(i, 5) - 0.5) * height * 0.35;
-        vy = -height * (0.1 + 0.22 * rnd(i, 6));
-        wz = (rnd(i, 7) - 0.5) * 3.0;
+        rot = (rnd(i, 4) - 0.5) * 1.0;
+        vx = (rnd(i, 5) - 0.5) * height * 0.22;
+        vy = -height * (0.07 + 0.14 * rnd(i, 6));
+        wz = (rnd(i, 7) - 0.5) * 1.8;
       }
 
       arr.push({
@@ -277,8 +277,8 @@ export default function PhysicsScene({
   }, [count, width, height, images, texBySrc, reducedMotion]);
 
   const pr = pointerRadius ?? height * 0.085;
-  const ld = 0.6;
-  const ad = 0.3;
+  const ld = 0.78;
+  const ad = 0.48;
 
   return (
     <>
