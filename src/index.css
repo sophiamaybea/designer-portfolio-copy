@@ -6,11 +6,11 @@
 
 @layer base {
   :root {
-    --background: 0 0% 96.5%;
+    --background: 0 0% 100%;
     --foreground: 0 0% 7%;
-    --card: 0 0% 97%;
+    --card: 0 0% 100%;
     --card-foreground: 0 0% 7%;
-    --popover: 0 0% 97%;
+    --popover: 0 0% 100%;
     --popover-foreground: 0 0% 7%;
     --primary: 227 100% 59%;
     --primary-foreground: 0 0% 97%;
@@ -31,7 +31,7 @@
     --chart-4: 0 0% 60%;
     --chart-5: 0 0% 20%;
     --radius: 0px;
-    --sidebar-background: 0 0% 96.5%;
+    --sidebar-background: 0 0% 100%;
     --sidebar-foreground: 0 0% 7%;
     --sidebar-primary: 227 100% 59%;
     --sidebar-primary-foreground: 0 0% 97%;
@@ -45,7 +45,7 @@
     --color-sage: #A3B18A;
     --color-cobalt: #2E5BFF;
     --color-charcoal: #121212;
-    --color-gallery: #F5F5F7;
+    --color-gallery: #FFFFFF;
   }
 
   .dark {
@@ -89,6 +89,11 @@
     @apply border-border;
     outline: none !important;
   }
+  html,
+  body,
+  #root {
+    background: #ffffff;
+  }
   body {
     @apply bg-background text-foreground;
     font-family: var(--font-body);
@@ -98,7 +103,7 @@
 /* Ghost Grid Lines */
 .ghost-grid {
   background-image: 
-    linear-gradient(to right, rgba(163,177,138,0.2) 1px, transparent 1px);
+    linear-gradient(to right, rgba(18,18,18,0.055) 1px, transparent 1px);
   background-size: calc(100% / 6) 100%;
 }
 
