@@ -34,6 +34,9 @@ export default function PerimeterNav() {
           ))}
         </nav>
 
+        <Link to="/connect" className="bea-nav-connect">
+          Connect AI ↗
+        </Link>
         <Link to="/contact" className="bea-nav-contact">
           Get in touch ↗
         </Link>
@@ -64,6 +67,7 @@ export default function PerimeterNav() {
             {links.map((link) => (
               <Link key={link.path} to={link.path}>{link.label}</Link>
             ))}
+            <Link to="/connect">Connect AI</Link>
             <Link to="/contact">Get in touch</Link>
           </motion.nav>
         )}

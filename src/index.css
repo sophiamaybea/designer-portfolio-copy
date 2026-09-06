@@ -979,6 +979,197 @@
   padding-top: 2rem;
 }
 
+/* ---------- Connect AI page ---------- */
+.connect-world {
+  padding: 6rem 0;
+  display: grid;
+  grid-template-columns: 0.85fr 1.15fr;
+  gap: clamp(4rem, 9vw, 10rem);
+  align-items: start;
+}
+
+.connect-side {
+  position: sticky;
+  top: 110px;
+}
+
+.connect-side p {
+  max-width: 420px;
+  margin: 0 0 1.8rem;
+  color: var(--quiet);
+  line-height: 1.75;
+}
+
+.connect-copy-field {
+  display: flex;
+  align-items: stretch;
+  border: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.45);
+  backdrop-filter: blur(10px);
+}
+
+.connect-copy-field input {
+  flex: 1;
+  min-width: 0;
+  padding: 0.85rem 0.9rem;
+  border: 0;
+  background: transparent;
+  color: var(--ink);
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.04em;
+}
+
+.connect-copy-field input:focus {
+  outline: none;
+}
+
+.connect-copy-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0 0.95rem;
+  border: 0;
+  border-left: 1px solid var(--line);
+  background: var(--ink);
+  color: var(--paper);
+  font-family: var(--font-mono);
+  font-size: 0.58rem;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background 160ms ease;
+}
+
+.connect-copy-button:hover {
+  background: var(--blue);
+}
+
+.connect-clients {
+  border-top: 1px solid var(--line);
+  padding-top: 2rem;
+}
+
+.connect-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 2.4rem;
+}
+
+.connect-tabs button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.55rem 0.95rem;
+  border: 1px solid var(--line);
+  background: transparent;
+  color: var(--quiet);
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: color 160ms ease, border-color 160ms ease, background 160ms ease;
+}
+
+.connect-tabs button:hover {
+  color: var(--ink);
+}
+
+.connect-tabs button.active {
+  color: var(--paper);
+  background: var(--ink);
+  border-color: var(--ink);
+}
+
+.connect-steps {
+  list-style: none;
+  margin: 0 0 2.4rem;
+  padding: 0;
+  display: grid;
+  gap: 1rem;
+}
+
+.connect-steps li {
+  display: grid;
+  grid-template-columns: 38px 1fr;
+  gap: 1rem;
+  align-items: baseline;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--line);
+  color: var(--ink);
+  line-height: 1.7;
+  max-width: 620px;
+}
+
+.connect-step-number {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.08em;
+  color: var(--blue);
+}
+
+.connect-step-note {
+  border-bottom: 0;
+  padding-bottom: 0;
+}
+
+.connect-step-note span:last-child {
+  color: var(--quiet);
+  font-size: 0.95rem;
+}
+
+.connect-refresh {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  max-width: 620px;
+  margin: 0;
+  padding: 0.9rem 1rem;
+  border: 1px solid var(--line);
+  color: var(--quiet);
+  font-size: 0.82rem;
+  line-height: 1.6;
+}
+
+.bea-nav-connect {
+  justify-self: end;
+  margin-right: 1.3rem;
+  padding-bottom: 0.24rem;
+  border-bottom: 1px solid currentColor;
+  color: var(--ink);
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: color 160ms ease;
+}
+
+.bea-nav-connect:hover {
+  color: var(--blue);
+}
+
+@media (max-width: 980px) {
+  .connect-world {
+    grid-template-columns: 1fr;
+  }
+  .connect-side {
+    position: static;
+  }
+}
+
+@media (max-width: 700px) {
+  .connect-world {
+    padding: 4rem 0;
+    gap: 3rem;
+  }
+  .bea-nav-connect {
+    display: none;
+  }
+}
+
 /* ---------- Reduced motion ---------- */
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
@@ -2296,4 +2487,3 @@ body::after {
     text-align: right;
   }
 }
-

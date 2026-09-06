@@ -13,6 +13,7 @@ import Courses from "@/pages/Courses";
 import Journal from "@/pages/Journal";
 import About from "@/pages/About";
 import Contact from "@/pages/Contact";
+import Connect from "@/pages/Connect";
 import OAuthConsent from "@/pages/OAuthConsent";
 
 const AuthenticatedApp = () => {
@@ -42,6 +43,7 @@ const AuthenticatedApp = () => {
         <Route path="/journal" element={<Journal />} />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/connect" element={<Connect />} />
         <Route path="/projects" element={<Navigate to="/courses" replace />} />
       </Route>
       <Route path="/oauth/consent" element={<OAuthConsent />} />
