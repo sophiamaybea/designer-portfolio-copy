@@ -32,6 +32,7 @@ export default function InteractiveSection() {
         restitution={0.5}
         friction={0.35}
         height={520}
+        background="#ffffff"
       />
 
       <p className="font-mono text-xs tracking-widest uppercase text-muted-foreground mt-6">
