@@ -1106,31 +1106,27 @@
 
 /* ---------- Interactive glass world ---------- */
 :root {
-  --paper: #dfe9ff;
-  --paper-soft: #f5f8ff;
-  --ink: #07111f;
-  --blue: #2048ff;
-  --blue-soft: #6f8cff;
-  --line: rgba(7, 17, 31, 0.16);
-  --quiet: rgba(7, 17, 31, 0.62);
+  --paper: #edf0f3;
+  --paper-soft: #f8f9fa;
+  --ink: #0a0d13;
+  --blue: #2147ff;
+  --blue-soft: #6e83ff;
+  --line: rgba(10, 13, 19, 0.14);
+  --quiet: rgba(10, 13, 19, 0.6);
   --world-x: 72%;
   --world-y: 18%;
 }
 
 html,
 body {
-  background: #dfe9ff;
+  background: #edf0f3;
 }
 
 body {
   background-image:
-    radial-gradient(circle at var(--world-x) var(--world-y), rgba(255, 255, 255, 0.95) 0, rgba(255, 255, 255, 0.52) 12%, transparent 31%),
-    radial-gradient(circle at 12% 18%, rgba(92, 137, 255, 0.28) 0, transparent 31%),
-    radial-gradient(circle at 86% 76%, rgba(255, 132, 192, 0.22) 0, transparent 30%),
-    radial-gradient(circle at 42% 86%, rgba(255, 218, 89, 0.18) 0, transparent 24%),
-    linear-gradient(135deg, #d9e5ff 0%, #eff5ff 44%, #d8e8ff 100%);
+    radial-gradient(ellipse 42% 34% at var(--world-x) var(--world-y), rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.34) 32%, transparent 74%),
+    linear-gradient(180deg, #f4f6f8 0%, #e9edf1 50%, #eef1f4 100%);
   background-attachment: fixed;
-  transition: background-position 180ms ease-out;
 }
 
 body::before {
@@ -1139,11 +1135,19 @@ body::before {
   inset: 0;
   pointer-events: none;
   z-index: -1;
-  background:
-    linear-gradient(90deg, rgba(32, 72, 255, 0.035) 1px, transparent 1px),
-    linear-gradient(rgba(32, 72, 255, 0.028) 1px, transparent 1px);
-  background-size: 88px 88px;
-  mask-image: radial-gradient(circle at center, black 24%, transparent 78%);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160' viewBox='0 0 160 160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.82' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.38'/%3E%3C/svg%3E");
+  background-size: 160px 160px;
+  opacity: 0.032;
+  mix-blend-mode: multiply;
+}
+
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: -1;
+  box-shadow: inset 0 0 180px rgba(48, 57, 71, 0.07);
 }
 
 .bea-home,
@@ -1154,16 +1158,14 @@ body::before {
 }
 
 .bea-nav {
-  background: rgba(226, 236, 255, 0.62);
-  border-bottom-color: rgba(7, 17, 31, 0.12);
-  backdrop-filter: blur(22px) saturate(150%);
-  -webkit-backdrop-filter: blur(22px) saturate(150%);
+  background: rgba(246, 247, 249, 0.7);
+  border-bottom-color: rgba(10, 13, 19, 0.1);
+  backdrop-filter: blur(24px) saturate(112%);
+  -webkit-backdrop-filter: blur(24px) saturate(112%);
 }
 
 .world-hero {
-  background:
-    radial-gradient(circle at 50% 44%, rgba(255, 255, 255, 0.72) 0, rgba(255, 255, 255, 0.16) 26%, transparent 54%),
-    linear-gradient(180deg, rgba(255,255,255,0.05), rgba(73,111,255,0.04));
+  background: linear-gradient(180deg, rgba(255,255,255,0.36), rgba(255,255,255,0.04) 72%, transparent 100%);
 }
 
 .world-hero::before {
@@ -1172,10 +1174,8 @@ body::before {
   inset: 0;
   pointer-events: none;
   z-index: 1;
-  background:
-    radial-gradient(circle at 28% 20%, rgba(255,255,255,0.55), transparent 16%),
-    radial-gradient(circle at 78% 72%, rgba(105,135,255,0.14), transparent 24%);
-  mix-blend-mode: screen;
+  background: radial-gradient(ellipse 38% 32% at var(--world-x) var(--world-y), rgba(255,255,255,0.7), transparent 74%);
+  opacity: 0.92;
 }
 
 .hero-copy {
@@ -1231,8 +1231,8 @@ body::before {
   position: absolute;
   inset: 0;
   pointer-events: none;
-  background: radial-gradient(circle at var(--world-x) var(--world-y), rgba(255,255,255,0.35), transparent 19%);
-  opacity: 0.9;
+  background: radial-gradient(ellipse 30% 26% at var(--world-x) var(--world-y), rgba(255,255,255,0.34), transparent 76%);
+  opacity: 0.62;
 }
 
 .pebble-instruction {
@@ -1424,30 +1424,19 @@ body::before {
 }
 
 .chapter-work {
-  background:
-    radial-gradient(circle at 76% 36%, rgba(255, 255, 255, 0.72), transparent 28%),
-    linear-gradient(145deg, rgba(165, 194, 255, 0.18), rgba(235, 243, 255, 0.2));
+  background: linear-gradient(180deg, rgba(255,255,255,0.32), rgba(255,255,255,0.06));
 }
 
 .chapter-courses {
-  background:
-    radial-gradient(circle at 18% 70%, rgba(255, 190, 224, 0.2), transparent 28%),
-    radial-gradient(circle at 88% 20%, rgba(255, 227, 126, 0.16), transparent 24%),
-    linear-gradient(145deg, rgba(242, 247, 255, 0.24), rgba(181, 203, 255, 0.15));
+  background: rgba(247, 248, 250, 0.44);
 }
 
 .chapter-journal {
-  background:
-    radial-gradient(circle at 24% 28%, rgba(255, 221, 126, 0.18), transparent 26%),
-    radial-gradient(circle at 78% 72%, rgba(126, 158, 255, 0.18), transparent 28%),
-    linear-gradient(145deg, rgba(222, 234, 255, 0.24), rgba(248, 250, 255, 0.14));
+  background: rgba(224, 229, 235, 0.28);
 }
 
 .final-chapter {
-  background:
-    radial-gradient(circle at 50% 38%, rgba(255,255,255,0.8), transparent 24%),
-    radial-gradient(circle at 50% 85%, rgba(83, 111, 255, 0.18), transparent 34%),
-    linear-gradient(180deg, rgba(224, 235, 255, 0.1), rgba(151, 181, 247, 0.24));
+  background: linear-gradient(180deg, rgba(255,255,255,0.08), rgba(209, 215, 223, 0.42));
 }
 
 .scroll-cinema-ui {
@@ -1732,13 +1721,11 @@ body::before {
   top: 0;
   height: 100svh;
   overflow: hidden;
-  background:
-    radial-gradient(circle at 14% 18%, rgba(255,255,255,0.72), transparent 20%),
-    radial-gradient(circle at 88% 76%, rgba(83,120,255,0.18), transparent 26%),
-    linear-gradient(120deg, rgba(223,234,255,0.96), rgba(240,246,255,0.92) 45%, rgba(211,227,255,0.96));
-  border: 1px solid rgba(7,17,31,0.09);
+  background: linear-gradient(112deg, #f5f6f7 0%, #e6eaee 52%, #f1f3f5 100%);
+  border: 1px solid rgba(10,13,19,0.09);
   isolation: isolate;
   transform-origin: center;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.78), inset 0 -1px 0 rgba(10,13,19,0.06);
 }
 
 .aw-world-sticky::before {
@@ -1747,11 +1734,9 @@ body::before {
   inset: 0;
   pointer-events: none;
   z-index: 1;
-  background:
-    linear-gradient(90deg, rgba(7,17,31,0.038) 1px, transparent 1px),
-    linear-gradient(rgba(7,17,31,0.03) 1px, transparent 1px);
-  background-size: 7.5vw 7.5vw;
-  mask-image: radial-gradient(circle at center, black 8%, transparent 88%);
+  background: linear-gradient(90deg, rgba(10,13,19,0.045) 1px, transparent 1px);
+  background-size: 25vw 100%;
+  opacity: 0.42;
 }
 
 .aw-world-topline,
@@ -1994,19 +1979,19 @@ body::before {
 }
 
 .aw-scene:nth-child(2) {
-  background: radial-gradient(circle at 78% 24%, rgba(255,172,215,0.2), transparent 26%);
+  background: rgba(255,255,255,0.13);
 }
 
 .aw-scene:nth-child(3) {
-  background: radial-gradient(circle at 82% 72%, rgba(255,219,103,0.2), transparent 28%);
+  background: rgba(210,216,223,0.14);
 }
 
 .aw-scene:nth-child(4) {
-  background: radial-gradient(circle at 22% 78%, rgba(101,209,226,0.18), transparent 26%);
+  background: rgba(255,255,255,0.09);
 }
 
 .aw-scene:nth-child(5) {
-  background: radial-gradient(circle at 76% 28%, rgba(153,116,255,0.18), transparent 26%);
+  background: rgba(219,224,230,0.16);
 }
 
 @media (max-width: 800px) {
@@ -2124,9 +2109,9 @@ body::before {
   grid-template-rows: auto 1fr auto;
   gap: 1.5rem 3rem;
   overflow: hidden;
-  border: 1px solid rgba(7,17,31,0.13);
+  border: 1px solid rgba(10,13,19,0.12);
   border-radius: 34px;
-  box-shadow: 0 24px 80px rgba(31,54,120,0.12);
+  box-shadow: 0 28px 90px rgba(20,26,36,0.1), 0 2px 8px rgba(20,26,36,0.05);
   transform-origin: 50% 10%;
   will-change: transform, filter, opacity;
   isolation: isolate;
@@ -2137,9 +2122,7 @@ body::before {
   position: absolute;
   inset: 0;
   z-index: -2;
-  background:
-    radial-gradient(circle at 76% 20%, rgba(255,255,255,0.78), transparent 26%),
-    linear-gradient(135deg, rgba(232,240,255,0.96), rgba(207,224,255,0.9));
+  background: linear-gradient(135deg, rgba(249,250,251,0.98), rgba(225,230,235,0.96));
 }
 
 .course-stack-card::after {
@@ -2147,25 +2130,17 @@ body::before {
   position: absolute;
   inset: 0;
   z-index: -1;
-  background:
-    linear-gradient(90deg, rgba(7,17,31,0.04) 1px, transparent 1px),
-    linear-gradient(rgba(7,17,31,0.035) 1px, transparent 1px);
-  background-size: 72px 72px;
-  mask-image: linear-gradient(90deg, rgba(0,0,0,0.85), transparent 74%);
+  background: linear-gradient(90deg, rgba(10,13,19,0.035) 1px, transparent 1px);
+  background-size: 25% 100%;
+  opacity: 0.5;
 }
 
 .course-stack-card-2::before {
-  background:
-    radial-gradient(circle at 78% 20%, rgba(255,255,255,0.8), transparent 24%),
-    radial-gradient(circle at 18% 82%, rgba(255,137,198,0.2), transparent 28%),
-    linear-gradient(135deg, rgba(238,239,255,0.96), rgba(227,216,255,0.92));
+  background: linear-gradient(135deg, rgba(245,246,248,0.98), rgba(216,222,229,0.96));
 }
 
 .course-stack-card-3::before {
-  background:
-    radial-gradient(circle at 76% 18%, rgba(255,255,255,0.82), transparent 24%),
-    radial-gradient(circle at 18% 80%, rgba(255,218,92,0.22), transparent 28%),
-    linear-gradient(135deg, rgba(226,241,255,0.96), rgba(205,235,242,0.92));
+  background: linear-gradient(135deg, rgba(247,248,249,0.98), rgba(226,231,235,0.96));
 }
 
 .course-stack-meta {
