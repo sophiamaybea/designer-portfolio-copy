@@ -11,15 +11,16 @@ module.exports = {
       },
       fontFamily: {
         body: ['var(--font-body)'],
+        display: ['var(--font-display)'],
         mono: ['var(--font-mono)'],
       },
       colors: {
         background: 'hsl(var(--background))',
         foreground: 'hsl(var(--foreground))',
         sage: '#A3B18A',
-        cobalt: '#2E5BFF',
+        cobalt: '#E65337',
         charcoal: '#121212',
-        gallery: '#F5F5F7',
+        gallery: '#FFFFFF',
         card: {
           DEFAULT: 'hsl(var(--card))',
           foreground: 'hsl(var(--card-foreground))'
