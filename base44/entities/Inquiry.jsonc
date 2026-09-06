@@ -1,0 +1,39 @@
+{
+  "name": "Inquiry",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Name of the person getting in touch"
+    },
+    "email": {
+      "type": "string",
+      "description": "Contact email"
+    },
+    "topic": {
+      "type": "string",
+      "enum": [
+        "course",
+        "journal",
+        "editorial",
+        "collaboration",
+        "other"
+      ],
+      "description": "Reason for getting in touch"
+    },
+    "message": {
+      "type": "string",
+      "description": "Their message"
+    },
+    "source": {
+      "type": "string",
+      "description": "Where the inquiry came from"
+    }
+  },
+  "required": [
+    "name",
+    "email",
+    "topic",
+    "message"
+  ]
+}
