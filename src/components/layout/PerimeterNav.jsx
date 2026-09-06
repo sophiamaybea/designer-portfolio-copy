@@ -1,9 +1,8 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
-import { X, Sun, Moon, ChevronDown } from "lucide-react";
+import { X, ChevronDown } from "lucide-react";
 import { projects } from "@/lib/projectData";
-import { useTheme } from "next-themes";
 
 const navLinks = [
   { label: "Home", path: "/" },
@@ -250,7 +249,6 @@ function AnimatedLogo() {
 }
 
 export default function PerimeterNav() {
-  const { theme, setTheme } = useTheme();
   const [menuOpen, setMenuOpen] = useState(false);
   const [heroVisible, setHeroVisible] = useState(true);
   const location = useLocation();
@@ -301,18 +299,6 @@ export default function PerimeterNav() {
             <AnimatedLogo />
           </Link>
 
-          {/* Top Center — Dark Mode Toggle */}
-          <button
-            onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-            className="pointer-events-auto p-1.5 hover:text-cobalt transition-colors duration-300 focus:outline-none"
-            style={{
-              color: isProjectPage && heroVisible ? '#F5F5F7' : undefined
-            }}
-            aria-label="Toggle dark mode"
-          >
-            {theme === 'dark' ? <Sun className="w-5 h-5 scale-90" /> : <Moon className="w-5 h-5 scale-90" />}
-          </button>
-
           {/* Top Right — Menu Trigger */}
           <button
             onClick={() => setMenuOpen(true)}
@@ -338,18 +324,6 @@ export default function PerimeterNav() {
           >
             <AnimatedLogo />
           </Link>
-
-          {/* Top Center — Dark Mode Toggle */}
-          <button
-            onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-            className="pointer-events-auto absolute top-6 left-1/2 -translate-x-1/2 md:top-8 p-1.5 hover:text-cobalt transition-colors duration-300 focus:outline-none"
-            style={{
-              color: isProjectPage && heroVisible ? '#F5F5F7' : undefined
-            }}
-            aria-label="Toggle dark mode"
-          >
-            {theme === 'dark' ? <Sun className="w-5 h-5 scale-90" /> : <Moon className="w-5 h-5 scale-90" />}
-          </button>
 
           {/* Top Right — Menu Trigger */}
           <button
