@@ -10,8 +10,8 @@ export default function Home() {
   return (
     <div>
       <HeroSection heroImage={HERO_IMAGE} />
-      <ProjectGallery />
       <InteractiveSection />
+      <ProjectGallery />
       <PhilosophySection />
     </div>
   );
