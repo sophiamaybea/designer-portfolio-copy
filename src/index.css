@@ -1103,3 +1103,317 @@
   .contact-world { padding: 4rem 0; gap: 3rem; }
   .contact-art { position: static; max-height: 420px; object-fit: contain; }
 }
+
+/* ---------- Interactive glass world ---------- */
+:root {
+  --paper: #dfe9ff;
+  --paper-soft: #f5f8ff;
+  --ink: #07111f;
+  --blue: #2048ff;
+  --blue-soft: #6f8cff;
+  --line: rgba(7, 17, 31, 0.16);
+  --quiet: rgba(7, 17, 31, 0.62);
+  --world-x: 72%;
+  --world-y: 18%;
+}
+
+html,
+body {
+  background: #dfe9ff;
+}
+
+body {
+  background-image:
+    radial-gradient(circle at var(--world-x) var(--world-y), rgba(255, 255, 255, 0.95) 0, rgba(255, 255, 255, 0.52) 12%, transparent 31%),
+    radial-gradient(circle at 12% 18%, rgba(92, 137, 255, 0.28) 0, transparent 31%),
+    radial-gradient(circle at 86% 76%, rgba(255, 132, 192, 0.22) 0, transparent 30%),
+    radial-gradient(circle at 42% 86%, rgba(255, 218, 89, 0.18) 0, transparent 24%),
+    linear-gradient(135deg, #d9e5ff 0%, #eff5ff 44%, #d8e8ff 100%);
+  background-attachment: fixed;
+  transition: background-position 180ms ease-out;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: -1;
+  background:
+    linear-gradient(90deg, rgba(32, 72, 255, 0.035) 1px, transparent 1px),
+    linear-gradient(rgba(32, 72, 255, 0.028) 1px, transparent 1px);
+  background-size: 88px 88px;
+  mask-image: radial-gradient(circle at center, black 24%, transparent 78%);
+}
+
+.bea-home,
+.world-page,
+.bea-footer,
+.mobile-world-menu {
+  background: transparent;
+}
+
+.bea-nav {
+  background: rgba(226, 236, 255, 0.62);
+  border-bottom-color: rgba(7, 17, 31, 0.12);
+  backdrop-filter: blur(22px) saturate(150%);
+  -webkit-backdrop-filter: blur(22px) saturate(150%);
+}
+
+.world-hero {
+  background:
+    radial-gradient(circle at 50% 44%, rgba(255, 255, 255, 0.72) 0, rgba(255, 255, 255, 0.16) 26%, transparent 54%),
+    linear-gradient(180deg, rgba(255,255,255,0.05), rgba(73,111,255,0.04));
+}
+
+.world-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  background:
+    radial-gradient(circle at 28% 20%, rgba(255,255,255,0.55), transparent 16%),
+    radial-gradient(circle at 78% 72%, rgba(105,135,255,0.14), transparent 24%);
+  mix-blend-mode: screen;
+}
+
+.hero-copy {
+  z-index: 9;
+  pointer-events: none;
+}
+
+.hero-copy h1 {
+  text-shadow: 0 1px 0 rgba(255,255,255,0.6), 0 14px 45px rgba(53, 75, 143, 0.08);
+}
+
+.hero-art {
+  filter: drop-shadow(0 24px 30px rgba(31, 52, 104, 0.12));
+}
+
+.hero-actions,
+.scroll-cue {
+  z-index: 20;
+}
+
+.hero-actions,
+.hero-actions * {
+  pointer-events: auto;
+}
+
+.hero-orbit {
+  border-color: rgba(32, 72, 255, 0.21);
+}
+
+.story-chapter,
+.final-chapter {
+  background: transparent;
+}
+
+.chapter-rule,
+.footer-bottom,
+.bea-footer {
+  border-color: rgba(7, 17, 31, 0.14);
+}
+
+/* Physics field: intentionally has no visible container. */
+.pebble-field {
+  position: absolute;
+  inset: 70px 0 0;
+  z-index: 8;
+  overflow: hidden;
+  pointer-events: auto;
+  touch-action: pan-y;
+}
+
+.pebble-field::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(circle at var(--world-x) var(--world-y), rgba(255,255,255,0.35), transparent 19%);
+  opacity: 0.9;
+}
+
+.pebble-instruction {
+  position: absolute;
+  z-index: 0;
+  left: 50%;
+  bottom: 2.25rem;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  font-family: var(--font-mono);
+  font-size: 0.53rem;
+  letter-spacing: 0.12em;
+  color: rgba(7, 17, 31, 0.4);
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+.pebble-instruction span + span::before {
+  content: '•';
+  margin-right: 1rem;
+  color: var(--blue);
+}
+
+.pebble-shock {
+  position: absolute;
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  border: 1px solid rgba(32, 72, 255, 0.5);
+  box-shadow: 0 0 60px rgba(86, 118, 255, 0.28), inset 0 0 35px rgba(255,255,255,0.55);
+  transform: translate(-50%, -50%) scale(0);
+  opacity: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.glass-pebble {
+  --pebble-glow: rgba(65, 102, 255, 0.38);
+  --pebble-wash: rgba(255, 255, 255, 0.26);
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 4;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  border-radius: 50%;
+  cursor: grab;
+  will-change: transform;
+  touch-action: none;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.glass-pebble:active {
+  cursor: grabbing;
+  z-index: 30;
+}
+
+.glass-pebble:focus-visible {
+  outline: 2px solid var(--blue);
+  outline-offset: 8px;
+}
+
+.glass-pebble-body {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: 44% 56% 53% 47% / 48% 42% 58% 52%;
+  transform: translateZ(0);
+  transition: transform 220ms ease, filter 220ms ease;
+  filter: drop-shadow(0 18px 17px rgba(22, 44, 104, 0.18));
+}
+
+.glass-pebble-body::before {
+  content: '';
+  position: absolute;
+  inset: 8%;
+  border-radius: inherit;
+  background:
+    radial-gradient(circle at 29% 22%, rgba(255,255,255,0.94) 0, rgba(255,255,255,0.38) 13%, transparent 34%),
+    radial-gradient(circle at 70% 74%, var(--pebble-glow) 0, transparent 58%),
+    linear-gradient(145deg, rgba(255,255,255,0.52), var(--pebble-wash));
+  border: 1px solid rgba(255,255,255,0.7);
+  box-shadow:
+    inset 11px 12px 24px rgba(255,255,255,0.52),
+    inset -13px -14px 25px rgba(67, 92, 180, 0.18),
+    0 0 0 1px rgba(43, 68, 145, 0.09),
+    0 22px 46px rgba(33, 59, 137, 0.16);
+  backdrop-filter: blur(6px) saturate(150%);
+  -webkit-backdrop-filter: blur(6px) saturate(150%);
+}
+
+.glass-pebble img {
+  position: absolute;
+  z-index: 3;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  pointer-events: none;
+  transform: scale(1.04);
+  filter: saturate(1.08) contrast(1.02);
+}
+
+.glass-pebble-sheen {
+  position: absolute;
+  z-index: 4;
+  inset: 11%;
+  border-radius: inherit;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse at 30% 22%, rgba(255,255,255,0.72) 0 7%, transparent 22%),
+    linear-gradient(115deg, transparent 34%, rgba(255,255,255,0.22) 46%, transparent 59%);
+  mix-blend-mode: screen;
+}
+
+.glass-pebble-label {
+  position: absolute;
+  z-index: 8;
+  left: 50%;
+  top: calc(100% + 0.4rem);
+  transform: translate(-50%, 5px) rotate(0deg);
+  padding: 0.32rem 0.5rem;
+  border: 1px solid rgba(7,17,31,0.16);
+  border-radius: 999px;
+  background: rgba(247,250,255,0.72);
+  backdrop-filter: blur(12px);
+  color: rgba(7,17,31,0.76);
+  font-family: var(--font-mono);
+  font-size: 0.5rem;
+  letter-spacing: 0.1em;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 160ms ease, transform 160ms ease;
+}
+
+.glass-pebble:hover .glass-pebble-body,
+.glass-pebble:focus-visible .glass-pebble-body {
+  transform: scale(1.075);
+  filter: drop-shadow(0 26px 24px rgba(22, 44, 104, 0.24));
+}
+
+.glass-pebble:hover .glass-pebble-label,
+.glass-pebble:focus-visible .glass-pebble-label {
+  opacity: 1;
+  transform: translate(-50%, 0) rotate(0deg);
+}
+
+.glass-pebble-tint-0 { --pebble-glow: rgba(80, 113, 255, 0.4); --pebble-wash: rgba(185, 204, 255, 0.22); }
+.glass-pebble-tint-1 { --pebble-glow: rgba(255, 113, 187, 0.38); --pebble-wash: rgba(255, 189, 221, 0.19); }
+.glass-pebble-tint-2 { --pebble-glow: rgba(76, 197, 208, 0.38); --pebble-wash: rgba(156, 234, 235, 0.18); }
+.glass-pebble-tint-3 { --pebble-glow: rgba(255, 168, 68, 0.42); --pebble-wash: rgba(255, 215, 153, 0.2); }
+.glass-pebble-tint-4 { --pebble-glow: rgba(146, 100, 255, 0.39); --pebble-wash: rgba(205, 186, 255, 0.2); }
+.glass-pebble-tint-5 { --pebble-glow: rgba(255, 207, 55, 0.4); --pebble-wash: rgba(255, 235, 145, 0.18); }
+
+@media (max-width: 700px) {
+  .pebble-field {
+    inset-top: 62px;
+    inset: 62px 0 0;
+  }
+
+  .pebble-instruction {
+    bottom: 1.25rem;
+    font-size: 0.46rem;
+    gap: 0.55rem;
+    max-width: calc(100% - 2rem);
+    white-space: normal;
+    text-align: center;
+  }
+
+  .pebble-instruction span + span::before {
+    margin-right: 0.55rem;
+  }
+
+  .glass-pebble-label {
+    display: none;
+  }
+}
+
