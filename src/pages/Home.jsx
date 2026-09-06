@@ -8,6 +8,7 @@ import {
   useSpring,
   useTransform,
 } from "framer-motion";
+import InteractivePebbles from "@/components/home/InteractivePebbles";
 
 const ART = {
   mountain: "/art/mountain.png",
@@ -80,6 +81,7 @@ function Hero() {
     <section className="world-hero" onPointerMove={onPointerMove} aria-label="Bea Sophia introduction">
       <div className="hero-orbit hero-orbit-one" aria-hidden="true" />
       <div className="hero-orbit hero-orbit-two" aria-hidden="true" />
+      <InteractivePebbles />
 
       <motion.div
         className="hero-copy"
