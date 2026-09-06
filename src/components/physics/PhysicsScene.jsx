@@ -135,6 +135,35 @@ function InteractionPlane({ width, height, pointerRadius, strength, bodies }) {
   );
 }
 
+// Vertex/fragment shaders that knock out the white JPEG background so
+// only the glass shape remains (soft-edged, color-preserving).
+const KNOCKOUT_VERT = `
+  varying vec2 vUv;
+  void main() {
+    vUv = uv;
+    gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+  }
+`;
+const KNOCKOUT_FRAG = `
+  precision mediump float;
+  uniform sampler2D map;
+  uniform float cutoff;
+  uniform float soft;
+  varying vec2 vUv;
+  void main() {
+    vec4 c = texture2D(map, vUv);
+    float lum = dot(c.rgb, vec3(0.299, 0.587, 0.114));
+    float mx = max(c.r, max(c.g, c.b));
+    float mn = min(c.r, min(c.g, c.b));
+    float sat = mx - mn;
+    // "whiteness" = bright AND desaturated; saturated colors (yellow, cyan) survive.
+    float whitey = clamp(lum - sat * 0.6, 0.0, 1.0);
+    float a = 1.0 - smoothstep(cutoff, cutoff + soft, whitey);
+    if (a <= 0.002) discard;
+    gl_FragColor = vec4(c.rgb, a);
+  }
+`;
+
 export default function PhysicsScene({
   images,
   count,
@@ -167,14 +196,17 @@ export default function PhysicsScene({
   const materialBySrc = useMemo(() => {
     const map = {};
     images.forEach((img) => {
-      map[img.src] = new THREE.MeshStandardMaterial({
-        map: texBySrc[img.src],
+      map[img.src] = new THREE.ShaderMaterial({
+        uniforms: {
+          map: { value: texBySrc[img.src] },
+          cutoff: { value: 0.9 },
+          soft: { value: 0.09 },
+        },
+        vertexShader: KNOCKOUT_VERT,
+        fragmentShader: KNOCKOUT_FRAG,
         transparent: true,
-        alphaTest: 0.01,
         depthWrite: true,
         side: THREE.DoubleSide,
-        roughness: 0.92,
-        metalness: 0.0,
       });
     });
     return map;
