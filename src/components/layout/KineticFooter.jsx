@@ -31,9 +31,10 @@ export default function KineticFooter() {
         </div>
 
         <div className="footer-col">
-          <h3>ELSEWHERE</h3>
-          <a href="https://www.instagram.com" target="_blank" rel="noreferrer">Instagram ↗</a>
+          <h3>MADE HERE</h3>
+          <span>Bea Sophia</span>
           <span>The Page Gallery Journal</span>
+          <span>Writing courses</span>
         </div>
       </div>
 
