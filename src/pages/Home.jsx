@@ -173,53 +173,46 @@ function WorkChapter() {
 }
 
 function CoursesChapter() {
-  const [active, setActive] = useState(0);
+  const courseArt = [ART.brownstone, ART.mountain, ART.moon];
 
   return (
     <section className="story-chapter chapter-courses">
       <div className="chapter-rule" />
       <ChapterLabel number="02">COURSES</ChapterLabel>
-      <div className="courses-world">
-        <div className="courses-heading">
+
+      <div className="course-stack-intro">
+        <div>
           <h2>Courses built like studios,<br />not lectures.</h2>
-          <p>Exercises, decisions, close reading and practical ways back into the work.</p>
         </div>
-
-        <div className="courses-list" role="list">
-          {courses.map((course, index) => (
-            <button
-              key={course.title}
-              type="button"
-              className={`course-row ${active === index ? "is-active" : ""}`}
-              onMouseEnter={() => setActive(index)}
-              onFocus={() => setActive(index)}
-              onClick={() => setActive(index)}
-            >
-              <span className="course-number">{course.number}</span>
-              <span className="course-title">{course.title}</span>
-              <span className="course-arrow">↗</span>
-            </button>
-          ))}
-        </div>
-
-        <div className="course-doorway">
-          <motion.img
-            key={active}
-            src={ART.brownstone}
-            alt="Illustrated townhouse with glowing windows"
-            className="brownstone-art"
-            initial={{ opacity: 0.2, scale: 0.96, y: 14 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            transition={{ duration: 0.45 }}
-          />
-          <div className="course-note">
-            <span>{courses[active].number}</span>
-            <p>{courses[active].text}</p>
-          </div>
-        </div>
+        <p>Each one should feel like crossing into a different room: visual exercises, decisions, close reading and actual movement through the material.</p>
       </div>
+
+      <div className="course-stack-list">
+        {courses.map((course, index) => (
+          <article key={course.title} className={`course-stack-card course-stack-card-${index + 1}`}>
+            <div className="course-stack-meta">
+              <span>{course.number}</span>
+              <span>BEA SOPHIA / COURSE WORLD</span>
+            </div>
+            <div className="course-stack-copy">
+              <h3>{course.title}</h3>
+              <p>{course.text}</p>
+              <Link to="/courses" className="world-link">Open the course room <span>↗</span></Link>
+            </div>
+            <div className="course-stack-art-wrap" aria-hidden="true">
+              <span className="course-stack-orbit" />
+              <img src={courseArt[index]} alt="" className="course-stack-art" />
+            </div>
+            <div className="course-stack-corner" aria-hidden="true">
+              <span>0{index + 1}</span>
+              <span>SCROLL</span>
+            </div>
+          </article>
+        ))}
+      </div>
+
       <div className="chapter-end-link">
-        <Link to="/courses" className="world-link world-link-large">Enter the course room <span>→</span></Link>
+        <Link to="/courses" className="world-link world-link-large">See every course <span>→</span></Link>
       </div>
     </section>
   );
