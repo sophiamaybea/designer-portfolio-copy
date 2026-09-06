@@ -1,0 +1,256 @@
+/* Connect page + coding-agent section styles.
+   Imported by src/pages/Connect.jsx. Uses tokens from src/index.css. */
+
+/* ---------- Connect AI page ---------- */
+.connect-world {
+  padding: 6rem 0;
+  display: grid;
+  grid-template-columns: 0.85fr 1.15fr;
+  gap: clamp(4rem, 9vw, 10rem);
+  align-items: start;
+}
+
+.connect-side {
+  position: sticky;
+  top: 110px;
+}
+
+.connect-side p {
+  max-width: 420px;
+  margin: 0 0 1.8rem;
+  color: var(--quiet);
+  line-height: 1.75;
+}
+
+.connect-copy-field {
+  display: flex;
+  align-items: stretch;
+  border: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.45);
+  backdrop-filter: blur(10px);
+}
+
+.connect-copy-field input {
+  flex: 1;
+  min-width: 0;
+  padding: 0.85rem 0.9rem;
+  border: 0;
+  background: transparent;
+  color: var(--ink);
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.04em;
+}
+
+.connect-copy-field input:focus {
+  outline: none;
+}
+
+.connect-copy-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0 0.95rem;
+  border: 0;
+  border-left: 1px solid var(--line);
+  background: var(--ink);
+  color: var(--paper);
+  font-family: var(--font-mono);
+  font-size: 0.58rem;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background 160ms ease;
+}
+
+.connect-copy-button:hover {
+  background: var(--blue);
+}
+
+.connect-clients {
+  border-top: 1px solid var(--line);
+  padding-top: 2rem;
+}
+
+.connect-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 2.4rem;
+}
+
+.connect-tabs button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.55rem 0.95rem;
+  border: 1px solid var(--line);
+  background: transparent;
+  color: var(--quiet);
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: color 160ms ease, border-color 160ms ease, background 160ms ease;
+}
+
+.connect-tabs button:hover {
+  color: var(--ink);
+}
+
+.connect-tabs button.active {
+  color: var(--paper);
+  background: var(--ink);
+  border-color: var(--ink);
+}
+
+.connect-steps {
+  list-style: none;
+  margin: 0 0 2.4rem;
+  padding: 0;
+  display: grid;
+  gap: 1rem;
+}
+
+.connect-steps li {
+  display: grid;
+  grid-template-columns: 38px 1fr;
+  gap: 1rem;
+  align-items: baseline;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--line);
+  color: var(--ink);
+  line-height: 1.7;
+  max-width: 620px;
+}
+
+.connect-step-number {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.08em;
+  color: var(--blue);
+}
+
+.connect-step-note {
+  border-bottom: 0;
+  padding-bottom: 0;
+}
+
+.connect-step-note span:last-child {
+  color: var(--quiet);
+  font-size: 0.95rem;
+}
+
+.connect-refresh {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  max-width: 620px;
+  margin: 0;
+  padding: 0.9rem 1rem;
+  border: 1px solid var(--line);
+  color: var(--quiet);
+  font-size: 0.82rem;
+  line-height: 1.6;
+}
+
+/* ---------- Coding agent section ---------- */
+.connect-agent {
+  margin-top: 6rem;
+  padding-top: 3rem;
+  border-top: 1px solid var(--line);
+  max-width: 760px;
+}
+
+.connect-agent h2 {
+  margin: 1.4rem 0 1rem;
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(3rem, 6vw, 5.5rem);
+  line-height: 0.88;
+  letter-spacing: -0.045em;
+}
+
+.connect-agent-lede {
+  max-width: 620px;
+  margin: 0 0 2.4rem;
+  color: var(--quiet);
+  line-height: 1.75;
+}
+
+.connect-agent-blurb {
+  max-width: 620px;
+  margin: 0 0 1.8rem;
+  color: var(--quiet);
+  line-height: 1.7;
+}
+
+.connect-agent-blocks {
+  display: grid;
+  gap: 1.4rem;
+  margin-bottom: 2.4rem;
+}
+
+.connect-agent-block .eyebrow {
+  display: block;
+  margin-bottom: 0.6rem;
+}
+
+.connect-agent-notes {
+  list-style: none;
+  margin: 0 0 2rem;
+  padding: 0;
+  display: grid;
+  gap: 0.8rem;
+  max-width: 620px;
+}
+
+.connect-agent-notes li {
+  display: grid;
+  grid-template-columns: 20px 1fr;
+  gap: 0.7rem;
+  align-items: baseline;
+  color: var(--quiet);
+  font-size: 0.85rem;
+  line-height: 1.6;
+}
+
+.connect-agent-notes code {
+  font-family: var(--font-mono);
+  font-size: 0.78em;
+  background: rgba(10, 13, 19, 0.06);
+  padding: 0.05em 0.35em;
+}
+
+.connect-agent-plan {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  max-width: 620px;
+  margin: 0;
+  padding: 0.9rem 1rem;
+  border: 1px solid var(--line);
+  color: var(--quiet);
+  font-size: 0.82rem;
+  line-height: 1.6;
+}
+
+@media (max-width: 980px) {
+  .connect-world {
+    grid-template-columns: 1fr;
+  }
+  .connect-side {
+    position: static;
+  }
+}
+
+@media (max-width: 700px) {
+  .connect-world {
+    padding: 4rem 0;
+    gap: 3rem;
+  }
+  .connect-agent {
+    margin-top: 4rem;
+  }
+}

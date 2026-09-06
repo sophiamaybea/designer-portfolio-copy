@@ -1,6 +1,8 @@
 import React, { useEffect, useMemo } from "react";
+import "@/styles/connect.css";
 import CopyField from "@/components/connect/CopyField";
 import ClientSteps from "@/components/connect/ClientSteps";
+import CodingAgentSteps from "@/components/connect/CodingAgentSteps";
 
 export default function Connect() {
   useEffect(() => {
@@ -40,6 +42,8 @@ export default function Connect() {
 
           <ClientSteps />
         </section>
+
+        <CodingAgentSteps />
       </div>
     </div>
   );
