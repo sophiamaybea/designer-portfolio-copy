@@ -10,6 +10,7 @@ import {
 } from "framer-motion";
 import InteractivePebbles from "@/components/home/InteractivePebbles";
 import ScrollCinema, { ScrollPortal } from "@/components/home/ScrollCinema";
+import AwwwardsWorldGallery from "@/components/home/AwwwardsWorldGallery";
 
 const ART = {
   mountain: "/art/mountain.png",
@@ -280,6 +281,7 @@ export default function Home() {
     <div className="bea-home">
       <ScrollCinema />
       <Hero />
+      <AwwwardsWorldGallery />
       <WorkChapter />
       <ScrollPortal
         word="ENTER"
