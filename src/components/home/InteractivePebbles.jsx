@@ -40,6 +40,7 @@ export default function InteractivePebbles() {
   const scrollKickRef = useRef(0);
   const dragRef = useRef(null);
   const lastScrollRef = useRef(0);
+  const shockRef = useRef(null);
 
   useEffect(() => {
     const field = fieldRef.current;
@@ -258,12 +259,31 @@ export default function InteractivePebbles() {
       y: event.clientY - rect.top,
       active: true,
     };
+
+    const worldX = clamp((event.clientX / Math.max(window.innerWidth, 1)) * 100, 0, 100);
+    const worldY = clamp((event.clientY / Math.max(window.innerHeight, 1)) * 100, 0, 100);
+    document.documentElement.style.setProperty("--world-x", `${worldX}%`);
+    document.documentElement.style.setProperty("--world-y", `${worldY}%`);
   };
 
   const shockwave = (event) => {
     if (event.target !== event.currentTarget) return;
     updatePointer(event);
     const pointer = pointerRef.current;
+
+    const ripple = shockRef.current;
+    if (ripple) {
+      ripple.style.left = `${pointer.x}px`;
+      ripple.style.top = `${pointer.y}px`;
+      ripple.getAnimations?.().forEach((animation) => animation.cancel());
+      ripple.animate?.(
+        [
+          { transform: "translate(-50%, -50%) scale(0.1)", opacity: 0.48 },
+          { transform: "translate(-50%, -50%) scale(4.8)", opacity: 0 },
+        ],
+        { duration: 720, easing: "cubic-bezier(0.2, 0.8, 0.2, 1)" }
+      );
+    }
 
     bodiesRef.current.forEach((body) => {
       const cx = body.x + body.size / 2;
@@ -344,6 +364,7 @@ export default function InteractivePebbles() {
         <span>DRAG + FLICK</span>
         <span>CLICK EMPTY SPACE TO SCATTER</span>
       </div>
+      <span ref={shockRef} className="pebble-shock" aria-hidden="true" />
 
       {PEBBLES.map((pebble, index) => (
         <button
