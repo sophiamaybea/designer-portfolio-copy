@@ -31,11 +31,11 @@ export default function PhilosophySection() {
     <section className="py-24 md:py-40 px-6 md:px-8" aria-label="Design Philosophy">
       <div>
         <span className="font-mono text-xs tracking-widest uppercase text-muted-foreground block mb-8 md:mb-12">
-          Design philosophy / 03
+          Design Philosophy
         </span>
 
         <div className="mb-16">
-          <div className="font-display text-4xl md:text-6xl lg:text-7xl tracking-[-0.035em] text-foreground leading-[1.02] max-w-5xl">
+          <div className="font-body text-2xl md:text-4xl lg:text-5xl font-light tracking-tight text-foreground leading-loose max-w-4xl">
             <AnimatedParagraph text={philosophyText} />
           </div>
         </div>

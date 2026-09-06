@@ -51,7 +51,7 @@ function MarqueeRow({ items, direction = "left" }) {
               <span
               className="transition-all duration-300"
               style={{
-                color: hoveredIndex === i ? '#E65337' : hoveredIndex !== null ? 'inherit' : undefined,
+                color: hoveredIndex === i ? '#2E5BFF' : hoveredIndex !== null ? 'inherit' : undefined,
                 filter: hoveredIndex !== null && hoveredIndex !== i ? 'blur(4px)' : 'none',
                 opacity: hoveredIndex === i ? 1 : hoveredIndex !== null ? 0.15 : 0.1
               }}>
@@ -114,7 +114,7 @@ export default function KineticFooter() {
             className="font-mono text-xs tracking-widest uppercase text-foreground hover:text-cobalt transition-colors focus:outline-none focus:ring-2 focus:ring-cobalt focus:ring-offset-4 hidden">
             Start a Project →
           </Link>
-          <span className="font-mono text-xs text-muted-foreground">© 2026 Alex Moreau.</span>
+          <span className="font-mono text-xs text-muted-foreground">© 2026 Alex Moreau. Built on Base44.</span>
         </div>
       </div>
     </footer>);

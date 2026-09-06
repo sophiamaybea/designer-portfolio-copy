@@ -64,10 +64,10 @@ export default function ProjectCard({ project, index }) {
           <span className="font-mono text-xs tracking-widest text-muted-foreground uppercase mb-2">
             {project.id}/{String(6).padStart(2, "0")} — {project.year}
           </span>
-          <h3 className="font-display text-4xl md:text-6xl leading-[0.9] tracking-[-0.035em] text-foreground group-hover:text-cobalt transition-colors duration-300 mb-3">
+          <h3 className="font-body text-3xl md:text-4xl font-light tracking-tight text-foreground group-hover:text-cobalt transition-colors duration-300 mb-2">
             {project.title}
           </h3>
-          <p className="font-body text-sm leading-relaxed text-muted-foreground mb-4 max-w-sm">
+          <p className="font-body text-sm text-muted-foreground mb-3">
             {project.subtitle}
           </p>
           <span className="font-mono text-xs tracking-widest text-muted-foreground uppercase">
