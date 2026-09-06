@@ -9,6 +9,7 @@ import {
   useTransform,
 } from "framer-motion";
 import InteractivePebbles from "@/components/home/InteractivePebbles";
+import ScrollCinema, { ScrollPortal } from "@/components/home/ScrollCinema";
 
 const ART = {
   mountain: "/art/mountain.png",
@@ -277,9 +278,24 @@ export default function Home() {
 
   return (
     <div className="bea-home">
+      <ScrollCinema />
       <Hero />
       <WorkChapter />
+      <ScrollPortal
+        word="ENTER"
+        subword="THE COURSES"
+        kicker="A room opens when you keep scrolling"
+        art={ART.moon}
+        tone="blue"
+      />
       <CoursesChapter />
+      <ScrollPortal
+        word="TURN"
+        subword="THE PAGE"
+        kicker="The site changes register instead of simply changing section"
+        art={ART.skyline}
+        tone="rose"
+      />
       <JournalChapter />
       <FinalChapter />
     </div>
