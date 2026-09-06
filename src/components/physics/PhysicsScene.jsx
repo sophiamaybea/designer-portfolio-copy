@@ -207,7 +207,7 @@ export default function PhysicsScene({
         // keep oh proportional so aspect preserved
       }
       const marginX = ow * 0.55 + 4;
-      const x = marginX + (width - 2 * marginX) * rnd(i, 2);
+      let x = marginX + (width - 2 * marginX) * rnd(i, 2);
 
       let y, rot, vx, vy, wz;
       if (reducedMotion) {
