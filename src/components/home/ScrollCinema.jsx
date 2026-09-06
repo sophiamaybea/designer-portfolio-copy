@@ -181,6 +181,107 @@ export default function ScrollCinema() {
         );
       });
 
+      const stackCards = gsap.utils.toArray(".course-stack-card");
+      stackCards.forEach((card, index) => {
+        const art = card.querySelector(".course-stack-art");
+        const orbit = card.querySelector(".course-stack-orbit");
+        const copy = card.querySelector(".course-stack-copy");
+        const next = stackCards[index + 1];
+
+        gsap.fromTo(
+          card,
+          { scale: 0.92, y: 90, rotateZ: index % 2 === 0 ? -1.8 : 1.5, opacity: 0.55 },
+          {
+            scale: 1,
+            y: 0,
+            rotateZ: 0,
+            opacity: 1,
+            ease: "none",
+            scrollTrigger: {
+              trigger: card,
+              start: "top 92%",
+              end: "top 22%",
+              scrub: 0.85,
+            },
+          }
+        );
+
+        if (art) {
+          gsap.fromTo(
+            art,
+            { scale: 0.62, rotate: index % 2 === 0 ? -14 : 12, yPercent: 22, opacity: 0.28 },
+            {
+              scale: 1.08,
+              rotate: index % 2 === 0 ? 4 : -4,
+              yPercent: -12,
+              opacity: 1,
+              ease: "none",
+              scrollTrigger: {
+                trigger: card,
+                start: "top 88%",
+                end: "bottom 14%",
+                scrub: 1.05,
+              },
+            }
+          );
+        }
+
+        if (orbit) {
+          gsap.fromTo(
+            orbit,
+            { scale: 0.35, rotate: -35, opacity: 0.08 },
+            {
+              scale: 1.25,
+              rotate: 42,
+              opacity: 0.42,
+              ease: "none",
+              scrollTrigger: {
+                trigger: card,
+                start: "top 90%",
+                end: "bottom 18%",
+                scrub: 1.2,
+              },
+            }
+          );
+        }
+
+        if (copy) {
+          gsap.fromTo(
+            copy,
+            { y: 65, opacity: 0, filter: "blur(8px)" },
+            {
+              y: 0,
+              opacity: 1,
+              filter: "blur(0px)",
+              ease: "none",
+              scrollTrigger: {
+                trigger: card,
+                start: "top 84%",
+                end: "top 36%",
+                scrub: 0.75,
+              },
+            }
+          );
+        }
+
+        if (next) {
+          gsap.to(card, {
+            scale: 0.91 - index * 0.012,
+            y: -34 - index * 9,
+            rotateZ: index % 2 === 0 ? -1.1 : 0.9,
+            opacity: 0.54,
+            filter: "blur(2.5px)",
+            ease: "none",
+            scrollTrigger: {
+              trigger: next,
+              start: "top 82%",
+              end: "top 18%",
+              scrub: 0.9,
+            },
+          });
+        }
+      });
+
       gsap.utils.toArray(".scroll-portal").forEach((portal) => {
         const stage = portal.querySelector(".scroll-portal-sticky");
         const wash = portal.querySelector(".portal-wash");
