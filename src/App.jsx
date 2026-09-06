@@ -13,6 +13,7 @@ import Courses from "@/pages/Courses";
 import Journal from "@/pages/Journal";
 import About from "@/pages/About";
 import Contact from "@/pages/Contact";
+import OAuthConsent from "@/pages/OAuthConsent";
 
 const AuthenticatedApp = () => {
   const { isLoadingAuth, isLoadingPublicSettings, authError, navigateToLogin } = useAuth();
@@ -43,6 +44,7 @@ const AuthenticatedApp = () => {
         <Route path="/contact" element={<Contact />} />
         <Route path="/projects" element={<Navigate to="/courses" replace />} />
       </Route>
+      <Route path="/oauth/consent" element={<OAuthConsent />} />
       <Route path="*" element={<PageNotFound />} />
     </Routes>
   );
