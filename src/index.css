@@ -1395,7 +1395,6 @@ body::before {
 
 @media (max-width: 700px) {
   .pebble-field {
-    inset-top: 62px;
     inset: 62px 0 0;
   }
 
@@ -1414,6 +1413,310 @@ body::before {
 
   .glass-pebble-label {
     display: none;
+  }
+}
+
+/* ---------- GSAP scroll cinema ---------- */
+.story-chapter {
+  overflow: hidden;
+  transform-style: preserve-3d;
+  perspective: 1200px;
+}
+
+.chapter-work {
+  background:
+    radial-gradient(circle at 76% 36%, rgba(255, 255, 255, 0.72), transparent 28%),
+    linear-gradient(145deg, rgba(165, 194, 255, 0.18), rgba(235, 243, 255, 0.2));
+}
+
+.chapter-courses {
+  background:
+    radial-gradient(circle at 18% 70%, rgba(255, 190, 224, 0.2), transparent 28%),
+    radial-gradient(circle at 88% 20%, rgba(255, 227, 126, 0.16), transparent 24%),
+    linear-gradient(145deg, rgba(242, 247, 255, 0.24), rgba(181, 203, 255, 0.15));
+}
+
+.chapter-journal {
+  background:
+    radial-gradient(circle at 24% 28%, rgba(255, 221, 126, 0.18), transparent 26%),
+    radial-gradient(circle at 78% 72%, rgba(126, 158, 255, 0.18), transparent 28%),
+    linear-gradient(145deg, rgba(222, 234, 255, 0.24), rgba(248, 250, 255, 0.14));
+}
+
+.final-chapter {
+  background:
+    radial-gradient(circle at 50% 38%, rgba(255,255,255,0.8), transparent 24%),
+    radial-gradient(circle at 50% 85%, rgba(83, 111, 255, 0.18), transparent 34%),
+    linear-gradient(180deg, rgba(224, 235, 255, 0.1), rgba(151, 181, 247, 0.24));
+}
+
+.scroll-cinema-ui {
+  position: fixed;
+  z-index: 44;
+  top: 96px;
+  right: 15px;
+  width: 42px;
+  height: calc(100vh - 132px);
+  pointer-events: none;
+  opacity: 0.68;
+}
+
+.scroll-route {
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.scroll-route-ghost,
+.scroll-route-path {
+  fill: none;
+  vector-effect: non-scaling-stroke;
+}
+
+.scroll-route-ghost {
+  stroke: rgba(7, 17, 31, 0.11);
+  stroke-width: 1;
+}
+
+.scroll-route-path {
+  stroke: rgba(32, 72, 255, 0.84);
+  stroke-width: 1.35;
+  filter: drop-shadow(0 0 4px rgba(32, 72, 255, 0.28));
+}
+
+.scroll-route-dot {
+  position: absolute;
+  right: 16px;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  border: 1px solid rgba(32, 72, 255, 0.65);
+  background: rgba(241, 246, 255, 0.9);
+  box-shadow: 0 0 0 5px rgba(32, 72, 255, 0.06);
+}
+
+.scroll-route-dot-a { top: 24%; }
+.scroll-route-dot-b { top: 51%; }
+.scroll-route-dot-c { top: 77%; }
+
+.scroll-portal {
+  position: relative;
+  height: 190svh;
+  isolation: isolate;
+}
+
+.scroll-portal-sticky {
+  position: sticky;
+  top: 0;
+  height: 100svh;
+  overflow: hidden;
+  display: grid;
+  place-items: center;
+  transform-origin: center;
+  border: 1px solid rgba(7, 17, 31, 0.08);
+  background: rgba(234, 242, 255, 0.34);
+}
+
+.portal-wash {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  clip-path: circle(6% at 50% 50%);
+}
+
+.scroll-portal-blue .portal-wash {
+  background:
+    radial-gradient(circle at 50% 42%, rgba(255,255,255,0.96) 0, rgba(255,255,255,0.45) 22%, transparent 42%),
+    radial-gradient(circle at 20% 18%, rgba(65, 104, 255, 0.58), transparent 34%),
+    radial-gradient(circle at 82% 76%, rgba(95, 215, 228, 0.42), transparent 34%),
+    linear-gradient(135deg, #8eaeff 0%, #d9e7ff 45%, #88d3e8 100%);
+}
+
+.scroll-portal-rose .portal-wash {
+  background:
+    radial-gradient(circle at 52% 40%, rgba(255,255,255,0.94) 0, rgba(255,255,255,0.42) 21%, transparent 43%),
+    radial-gradient(circle at 18% 72%, rgba(255, 107, 181, 0.5), transparent 34%),
+    radial-gradient(circle at 86% 20%, rgba(255, 211, 79, 0.42), transparent 30%),
+    linear-gradient(135deg, #f3a7cc 0%, #dce8ff 44%, #f5df8c 100%);
+}
+
+.portal-rings {
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  pointer-events: none;
+}
+
+.portal-rings span {
+  position: absolute;
+  width: min(72vw, 950px);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  border: 1px solid rgba(7, 17, 31, 0.18);
+  mix-blend-mode: multiply;
+}
+
+.portal-rings span:nth-child(2) { width: min(52vw, 720px); }
+.portal-rings span:nth-child(3) { width: min(34vw, 480px); }
+
+.portal-kicker {
+  position: absolute;
+  z-index: 6;
+  top: 11%;
+  left: 50%;
+  margin: 0;
+  transform: translateX(-50%);
+  max-width: 520px;
+  text-align: center;
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  line-height: 1.55;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: rgba(7, 17, 31, 0.62);
+}
+
+.portal-word {
+  position: absolute;
+  z-index: 3;
+  inset: 0;
+  margin: 0;
+  display: grid;
+  align-content: center;
+  justify-items: center;
+  pointer-events: none;
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(6rem, 16vw, 15.5rem);
+  line-height: 0.68;
+  color: #07111f;
+  letter-spacing: -0.055em;
+  text-align: center;
+  text-shadow: 0 1px 0 rgba(255,255,255,0.6);
+}
+
+.portal-word span {
+  display: block;
+  will-change: transform, letter-spacing;
+}
+
+.portal-word span:last-child {
+  font-size: 0.56em;
+  margin-top: 0.2em;
+}
+
+.portal-art {
+  position: relative;
+  z-index: 4;
+  width: min(38vw, 520px);
+  max-height: 68svh;
+  object-fit: contain;
+  user-select: none;
+  pointer-events: none;
+  filter: drop-shadow(0 28px 34px rgba(13, 32, 88, 0.18));
+  will-change: transform;
+}
+
+.portal-index {
+  position: absolute;
+  z-index: 7;
+  left: 2rem;
+  bottom: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-family: var(--font-mono);
+  font-size: 0.54rem;
+  letter-spacing: 0.12em;
+  color: rgba(7, 17, 31, 0.55);
+}
+
+.portal-index span:last-child {
+  width: 34px;
+  height: 34px;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(7, 17, 31, 0.18);
+  border-radius: 50%;
+}
+
+.courses-list {
+  perspective: 900px;
+}
+
+.course-row {
+  transform-origin: left center;
+  will-change: transform, opacity;
+}
+
+.final-copy h2,
+.chapter-copy-large h2,
+.courses-heading h2,
+.journal-copy h2 {
+  will-change: transform, clip-path;
+}
+
+@media (max-width: 980px) {
+  .scroll-cinema-ui {
+    display: none;
+  }
+
+  .scroll-portal {
+    height: 150svh;
+  }
+
+  .portal-art {
+    width: min(58vw, 500px);
+  }
+
+  .portal-word {
+    font-size: clamp(5.5rem, 19vw, 11rem);
+  }
+}
+
+@media (max-width: 700px) {
+  .scroll-portal {
+    height: 135svh;
+  }
+
+  .scroll-portal-sticky {
+    height: 100svh;
+  }
+
+  .portal-kicker {
+    top: 14%;
+    width: calc(100% - 2rem);
+    font-size: 0.53rem;
+  }
+
+  .portal-word {
+    font-size: clamp(4.9rem, 23vw, 7.5rem);
+  }
+
+  .portal-word span:last-child {
+    font-size: 0.48em;
+  }
+
+  .portal-art {
+    width: min(76vw, 390px);
+    max-height: 54svh;
+  }
+
+  .portal-rings span { width: 100vw; }
+  .portal-rings span:nth-child(2) { width: 76vw; }
+  .portal-rings span:nth-child(3) { width: 52vw; }
+
+  .portal-index {
+    left: 1rem;
+    bottom: 1rem;
+  }
+
+  .story-chapter {
+    clip-path: none !important;
+    transform: none !important;
   }
 }
 
