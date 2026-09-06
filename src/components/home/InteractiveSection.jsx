@@ -8,7 +8,7 @@ export default function InteractiveSection() {
   const isInView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
-    <section className="py-24 md:py-40 px-6 md:px-8" aria-label="Interactive Pieces">
+    <section className="relative overflow-hidden py-24 md:py-40 px-6 md:px-8" aria-label="Interactive Pieces">
       <motion.div
         ref={ref}
         initial={{ opacity: 0, y: 30 }}
@@ -24,16 +24,17 @@ export default function InteractiveSection() {
         </h2>
       </motion.div>
 
-      <InteractiveImagePhysics
-        images={physicsImages}
-        objectCount={22}
-        interactionStrength={1}
-        gravity={-700}
-        restitution={0.5}
-        friction={0.35}
-        height={520}
-        background="#ffffff"
-      />
+      <div className="-mx-6 md:-mx-8">
+        <InteractiveImagePhysics
+          images={physicsImages}
+          objectCount={22}
+          interactionStrength={1}
+          gravity={-700}
+          restitution={0.5}
+          friction={0.35}
+          height={560}
+        />
+      </div>
 
       <p className="font-mono text-xs tracking-widest uppercase text-muted-foreground mt-6">
         Move your cursor — or drag a finger — through the pieces
