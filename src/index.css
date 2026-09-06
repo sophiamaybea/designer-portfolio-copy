@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -12,7 +12,7 @@
     --card-foreground: 0 0% 7%;
     --popover: 0 0% 100%;
     --popover-foreground: 0 0% 7%;
-    --primary: 227 100% 59%;
+    --primary: 10 78% 56%;
     --primary-foreground: 0 0% 97%;
     --secondary: 0 0% 90%;
     --secondary-foreground: 0 0% 7%;
@@ -24,8 +24,8 @@
     --destructive-foreground: 0 0% 98%;
     --border: 0 0% 85%;
     --input: 0 0% 85%;
-    --ring: 227 100% 59%;
-    --chart-1: 227 100% 59%;
+    --ring: 10 78% 56%;
+    --chart-1: 10 78% 56%;
     --chart-2: 103 22% 55%;
     --chart-3: 0 0% 40%;
     --chart-4: 0 0% 60%;
@@ -33,17 +33,18 @@
     --radius: 0px;
     --sidebar-background: 0 0% 100%;
     --sidebar-foreground: 0 0% 7%;
-    --sidebar-primary: 227 100% 59%;
+    --sidebar-primary: 10 78% 56%;
     --sidebar-primary-foreground: 0 0% 97%;
     --sidebar-accent: 0 0% 92%;
     --sidebar-accent-foreground: 0 0% 7%;
     --sidebar-border: 0 0% 85%;
-    --sidebar-ring: 227 100% 59%;
+    --sidebar-ring: 10 78% 56%;
 
     --font-body: 'Inter', sans-serif;
+    --font-display: 'Instrument Serif', Georgia, serif;
     --font-mono: 'JetBrains Mono', monospace;
     --color-sage: #A3B18A;
-    --color-cobalt: #2E5BFF;
+    --color-cobalt: #E65337;
     --color-charcoal: #121212;
     --color-gallery: #FFFFFF;
   }
@@ -55,7 +56,7 @@
     --card-foreground: 0 0% 96.5%;
     --popover: 0 0% 10%;
     --popover-foreground: 0 0% 96.5%;
-    --primary: 227 100% 59%;
+    --primary: 10 78% 56%;
     --primary-foreground: 0 0% 97%;
     --secondary: 0 0% 15%;
     --secondary-foreground: 0 0% 96.5%;
@@ -67,20 +68,20 @@
     --destructive-foreground: 0 0% 98%;
     --border: 0 0% 18%;
     --input: 0 0% 18%;
-    --ring: 227 100% 59%;
-    --chart-1: 227 100% 59%;
+    --ring: 10 78% 56%;
+    --chart-1: 10 78% 56%;
     --chart-2: 103 22% 55%;
     --chart-3: 0 0% 60%;
     --chart-4: 0 0% 40%;
     --chart-5: 0 0% 80%;
     --sidebar-background: 0 0% 7%;
     --sidebar-foreground: 0 0% 96.5%;
-    --sidebar-primary: 227 100% 59%;
+    --sidebar-primary: 10 78% 56%;
     --sidebar-primary-foreground: 0 0% 97%;
     --sidebar-accent: 0 0% 14%;
     --sidebar-accent-foreground: 0 0% 96.5%;
     --sidebar-border: 0 0% 18%;
-    --sidebar-ring: 227 100% 59%;
+    --sidebar-ring: 10 78% 56%;
   }
 }
 
@@ -177,7 +178,7 @@ html {
 }
 
 .animated-gradient-text {
-  background: radial-gradient(ellipse 50% 50% at center, #2E5BFF 0%, #121212 55%);
+  background: radial-gradient(ellipse 50% 50% at center, #E65337 0%, #121212 58%);
   background-size: 300% 300%;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
