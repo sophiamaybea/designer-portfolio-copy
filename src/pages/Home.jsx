@@ -1,16 +1,7 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
-import {
-  motion,
-  useMotionValue,
-  useReducedMotion,
-  useScroll,
-  useSpring,
-  useTransform,
-} from "framer-motion";
 import InteractivePebbles from "@/components/home/InteractivePebbles";
-import ScrollCinema, { ScrollPortal } from "@/components/home/ScrollCinema";
-import AwwwardsWorldGallery from "@/components/home/AwwwardsWorldGallery";
+import ScrollCinema from "@/components/home/ScrollCinema";
 
 const ART = {
   mountain: "/art/mountain.png",
@@ -25,220 +16,143 @@ const courses = [
   {
     number: "01",
     title: "The Perception Lab",
-    text: "A practical course in noticing more, choosing better and making the page carry what you actually saw.",
+    text: "Notice before you explain. Image, sensory hierarchy, line, rhythm and the detail that changes the page.",
+    art: ART.mountain,
   },
   {
     number: "02",
     title: "The Marrow Engine",
-    text: "An editing studio for finding the live material in a draft and cutting everything that is merely behaving itself.",
+    text: "Find the live material in a draft, cut what is merely behaving itself and make the rest answer to the pressure.",
+    art: ART.moon,
   },
   {
     number: "03",
     title: "Your First Poetry Manuscript",
-    text: "A guided route from scattered poems to a collection with shape, pressure and a reason to exist as a book.",
+    text: "Turn a folder of poems into a collection with shape, argument, sequence and a reason to exist as a book.",
+    art: ART.brownstone,
   },
 ];
 
 function ChapterLabel({ number, children }) {
   return (
-    <div className="chapter-label">
+    <div className="chapter-label proof-label">
       <span className="chapter-dot">{number}</span>
       <span>{children}</span>
     </div>
   );
 }
 
-function FloatingArt({ src, alt, className, depth = 1, pointerX, pointerY, reduced }) {
-  const x = useTransform(pointerX, [-0.5, 0.5], [-18 * depth, 18 * depth]);
-  const y = useTransform(pointerY, [-0.5, 0.5], [-12 * depth, 12 * depth]);
-
-  return (
-    <motion.img
-      src={src}
-      alt={alt}
-      className={className}
-      style={reduced ? undefined : { x, y }}
-      animate={reduced ? undefined : { translateY: [0, -8 * depth, 0] }}
-      transition={{ duration: 5 + depth, repeat: Infinity, ease: "easeInOut" }}
-      draggable={false}
-    />
-  );
-}
-
 function Hero() {
-  const reduced = useReducedMotion();
-  const rawX = useMotionValue(0);
-  const rawY = useMotionValue(0);
-  const pointerX = useSpring(rawX, { stiffness: 90, damping: 18 });
-  const pointerY = useSpring(rawY, { stiffness: 90, damping: 18 });
-
-  const onPointerMove = (event) => {
-    if (reduced) return;
-    const rect = event.currentTarget.getBoundingClientRect();
-    rawX.set((event.clientX - rect.left) / rect.width - 0.5);
-    rawY.set((event.clientY - rect.top) / rect.height - 0.5);
-  };
-
   return (
-    <section className="world-hero" onPointerMove={onPointerMove} aria-label="Bea Sophia introduction">
-      <div className="hero-orbit hero-orbit-one" aria-hidden="true" />
-      <div className="hero-orbit hero-orbit-two" aria-hidden="true" />
+    <section className="world-hero proof-hero" aria-label="Bea Sophia introduction">
+      <div className="proof-grid" aria-hidden="true" />
       <InteractivePebbles />
 
-      <motion.div
-        className="hero-copy"
-        initial={{ opacity: 0, y: 24 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-      >
-        <p className="eyebrow">WRITER · EDITOR · FOUNDER OF THE PAGE GALLERY JOURNAL</p>
-        <h1>
+      <div className="hero-copy proof-hero-copy">
+        <p className="eyebrow">WRITER / EDITOR / FOUNDER OF THE PAGE GALLERY</p>
+        <h1 aria-label="Bea Sophia">
           <span>BEA</span>
           <span>SOPHIA</span>
         </h1>
         <p className="hero-intro">
-          Writing, courses and an independent journal for people who want to make work that feels more alive on the page.
+          Writing, courses and an independent journal built around the interesting bit: what a page is actually doing.
         </p>
-      </motion.div>
-
-      <FloatingArt
-        src={ART.mountain}
-        alt="Bea Sophia mountain and lake illustration"
-        className="hero-art hero-mountain"
-        depth={0.7}
-        pointerX={pointerX}
-        pointerY={pointerY}
-        reduced={reduced}
-      />
-      <FloatingArt
-        src={ART.skyline}
-        alt="Bea Sophia ink skyline illustration"
-        className="hero-art hero-skyline"
-        depth={1.25}
-        pointerX={pointerX}
-        pointerY={pointerY}
-        reduced={reduced}
-      />
-      <FloatingArt
-        src={ART.moon}
-        alt="Bea Sophia moonlit water illustration"
-        className="hero-art hero-moon"
-        depth={1.55}
-        pointerX={pointerX}
-        pointerY={pointerY}
-        reduced={reduced}
-      />
-
-      <div className="hero-actions">
-        <Link to="/courses" className="world-link">Explore the courses <span>↗</span></Link>
-        <Link to="/journal" className="world-link world-link-muted">Visit the journal <span>↗</span></Link>
       </div>
 
-      <a href="#work" className="scroll-cue" aria-label="Scroll into Bea Sophia's world">
-        <span>ENTER</span>
-        <span className="scroll-cue-line" />
+      <figure className="hero-proof-art hero-proof-art-main" aria-hidden="true">
+        <img src={ART.mountain} alt="" draggable="false" />
+      </figure>
+      <figure className="hero-proof-art hero-proof-art-side" aria-hidden="true">
+        <img src={ART.skyline} alt="" draggable="false" />
+      </figure>
+
+      <nav className="hero-route-index" aria-label="Quick routes">
+        <span>OPEN:</span>
+        <Link to="/courses">COURSES ↗</Link>
+        <Link to="/journal">JOURNAL ↗</Link>
+        <Link to="/about">ABOUT ↗</Link>
+      </nav>
+
+      <a href="#work" className="scroll-cue proof-scroll-cue" aria-label="Continue to the work">
+        <span>DOWN</span>
+        <span>↓</span>
       </a>
     </section>
   );
 }
 
 function WorkChapter() {
-  const ref = useRef(null);
-  const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "end start"] });
-  const artY = useTransform(scrollYProgress, [0, 1], [90, -80]);
-  const lineX = useTransform(scrollYProgress, [0.1, 0.8], ["-18%", "8%"]);
-
   return (
-    <section ref={ref} id="work" className="story-chapter chapter-work">
-      <div className="chapter-rule" />
+    <section id="work" className="story-chapter proof-chapter proof-chapter-work">
+      <div className="proof-rule" />
       <ChapterLabel number="01">THE WORK</ChapterLabel>
-      <div className="chapter-grid">
-        <div className="chapter-copy chapter-copy-large">
-          <motion.h2 style={{ x: lineX }}>
-            A page is not a product.<br />It is a place something happens.
-          </motion.h2>
-          <p>
-            I write, edit and build courses around attention: what a line is doing, where a draft goes flat, what an image is actually carrying and what can be removed without losing the nerve of it.
+      <div className="proof-two-column">
+        <div className="proof-statement">
+          <p className="proof-index-note">OBSERVATION / EDITING / MAKING</p>
+          <h2>I like the bit before the work becomes tidy.</h2>
+          <p className="proof-body-copy">
+            A brilliant image beside a dead paragraph. A structure nobody trusts yet. A sentence that changes what the whole piece might be about. That is usually where the useful work starts.
           </p>
-          <Link to="/about" className="world-link">More about the studio <span>↗</span></Link>
+          <Link to="/about" className="world-link">READ ABOUT THE STUDIO <span>↗</span></Link>
         </div>
-        <motion.div className="chapter-art-stage walkers-stage" style={{ y: artY }}>
-          <img src={ART.walkers} alt="Two hand-drawn figures walking" className="walkers-art" />
-          <div className="orbit-small orbit-small-a" aria-hidden="true" />
-          <div className="orbit-small orbit-small-b" aria-hidden="true" />
-        </motion.div>
+        <div className="proof-art-stage">
+          <span className="proof-art-number" aria-hidden="true">01</span>
+          <img src={ART.walkers} alt="Two hand-drawn figures walking" className="settle-art proof-walkers" />
+          <p className="proof-caption">DRAWING / BEA SOPHIA</p>
+        </div>
       </div>
     </section>
   );
 }
 
 function CoursesChapter() {
-  const courseArt = [ART.brownstone, ART.mountain, ART.moon];
-
   return (
-    <section className="story-chapter chapter-courses">
-      <div className="chapter-rule" />
-      <ChapterLabel number="02">COURSES</ChapterLabel>
-
-      <div className="course-stack-intro">
-        <div>
-          <h2>Courses built like studios,<br />not lectures.</h2>
-        </div>
-        <p>Each one should feel like crossing into a different room: visual exercises, decisions, close reading and actual movement through the material.</p>
+    <section className="story-chapter proof-chapter proof-chapter-courses">
+      <div className="proof-rule" />
+      <ChapterLabel number="02">COURSE WORLDS</ChapterLabel>
+      <div className="proof-section-heading">
+        <h2>Courses built like working rooms, not content libraries.</h2>
+        <p>Exercises, decisions, close reading and actual movement through the material. Leave with changed pages, not a folder of watched videos.</p>
       </div>
 
-      <div className="course-stack-list">
-        {courses.map((course, index) => (
-          <article key={course.title} className={`course-stack-card course-stack-card-${index + 1}`}>
-            <div className="course-stack-meta">
-              <span>{course.number}</span>
-              <span>BEA SOPHIA / COURSE WORLD</span>
-            </div>
-            <div className="course-stack-copy">
+      <div className="proof-course-list">
+        {courses.map((course) => (
+          <article key={course.title} className="proof-course-row">
+            <span className="proof-course-number">{course.number}</span>
+            <div className="proof-course-copy">
               <h3>{course.title}</h3>
               <p>{course.text}</p>
-              <Link to="/courses" className="world-link">Open the course room <span>↗</span></Link>
             </div>
-            <div className="course-stack-art-wrap" aria-hidden="true">
-              <span className="course-stack-orbit" />
-              <img src={courseArt[index]} alt="" className="course-stack-art" />
+            <div className="proof-course-image" aria-hidden="true">
+              <img src={course.art} alt="" className="settle-art" />
             </div>
-            <div className="course-stack-corner" aria-hidden="true">
-              <span>0{index + 1}</span>
-              <span>SCROLL</span>
-            </div>
+            <Link to="/courses" className="proof-course-open" aria-label={`Open ${course.title}`}>
+              OPEN ↗
+            </Link>
           </article>
         ))}
-      </div>
-
-      <div className="chapter-end-link">
-        <Link to="/courses" className="world-link world-link-large">See every course <span>→</span></Link>
       </div>
     </section>
   );
 }
 
 function JournalChapter() {
-  const ref = useRef(null);
-  const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "end start"] });
-  const rotate = useTransform(scrollYProgress, [0, 1], [-4, 4]);
-  const y = useTransform(scrollYProgress, [0, 1], [70, -55]);
-
   return (
-    <section ref={ref} className="story-chapter chapter-journal">
-      <div className="chapter-rule" />
-      <ChapterLabel number="03">THE JOURNAL</ChapterLabel>
-      <div className="journal-world">
-        <motion.div className="journal-art-wrap" style={{ rotate, y }}>
-          <img src={ART.tudor} alt="Bea Sophia ink portrait illustration" className="tudor-art" />
-        </motion.div>
-        <div className="journal-copy">
-          <p className="journal-small">THE PAGE GALLERY JOURNAL</p>
-          <h2>A home for writing that still has something strange in it.</h2>
+    <section className="story-chapter proof-chapter proof-chapter-journal">
+      <div className="proof-rule" />
+      <ChapterLabel number="03">THE PAGE GALLERY</ChapterLabel>
+      <div className="proof-journal-grid">
+        <div className="proof-journal-image">
+          <span className="proof-art-number" aria-hidden="true">PG</span>
+          <img src={ART.tudor} alt="Ink and wash portrait illustration by Bea Sophia" className="settle-art" />
+        </div>
+        <div className="proof-journal-copy">
+          <p className="proof-index-note">INDEPENDENT LITERARY JOURNAL</p>
+          <h2>Writing that cannot be replaced by somebody else’s sentence.</h2>
           <p>
-            An independent journal founded by Bea Sophia, built around close attention to language, image, rhythm and the things a piece cannot quite explain away.
+            The Page Gallery is interested in image, rhythm, pressure, surprise and the moment a piece stops demonstrating that it can write and begins doing something only it can do.
           </p>
-          <Link to="/journal" className="world-link">Go to the journal <span>↗</span></Link>
+          <Link to="/journal" className="world-link">ENTER THE JOURNAL <span>↗</span></Link>
         </div>
       </div>
     </section>
@@ -247,20 +161,19 @@ function JournalChapter() {
 
 function FinalChapter() {
   return (
-    <section className="story-chapter final-chapter">
-      <div className="final-skyline-wrap" aria-hidden="true">
-        <img src={ART.skyline} alt="" className="final-skyline" />
-      </div>
-      <div className="final-copy">
-        <ChapterLabel number="04">COME IN</ChapterLabel>
+    <section className="story-chapter proof-final">
+      <div className="proof-rule" />
+      <div className="proof-final-copy">
+        <p className="eyebrow">04 / COME IN</p>
         <h2>Bring the draft.<br />Bring the odd bit.</h2>
         <p>There is room for the work before it knows exactly what it is.</p>
         <div className="final-actions">
           <Link to="/courses" className="world-button">COURSES <span>↗</span></Link>
-          <Link to="/journal" className="world-button world-button-outline">THE JOURNAL <span>↗</span></Link>
+          <Link to="/journal" className="world-button world-button-outline">JOURNAL <span>↗</span></Link>
           <Link to="/contact" className="world-button world-button-outline">GET IN TOUCH <span>↗</span></Link>
         </div>
       </div>
+      <img src={ART.skyline} alt="" className="settle-art proof-final-skyline" aria-hidden="true" />
     </section>
   );
 }
@@ -271,26 +184,11 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="bea-home">
+    <div className="bea-home proof-world">
       <ScrollCinema />
       <Hero />
-      <AwwwardsWorldGallery />
       <WorkChapter />
-      <ScrollPortal
-        word="ENTER"
-        subword="THE COURSES"
-        kicker="A room opens when you keep scrolling"
-        art={ART.moon}
-        tone="blue"
-      />
       <CoursesChapter />
-      <ScrollPortal
-        word="TURN"
-        subword="THE PAGE"
-        kicker="The site changes register instead of simply changing section"
-        art={ART.skyline}
-        tone="rose"
-      />
       <JournalChapter />
       <FinalChapter />
     </div>
