@@ -19,6 +19,10 @@ import OAuthConsent from "@/pages/OAuthConsent";
 
 const AuthenticatedApp = () => {
   const { isLoadingAuth, isLoadingPublicSettings, authError, navigateToLogin } = useAuth();
+  const showcasePreview = typeof window !== "undefined" && (
+    new URLSearchParams(window.location.search).get("showcase") === "vwlab" ||
+    window.location.hash === "#vwlab-showcase"
+  );
 
   if (isLoadingPublicSettings || isLoadingAuth) {
     return (
@@ -35,6 +39,8 @@ const AuthenticatedApp = () => {
       return null;
     }
   }
+
+  if (showcasePreview) return <VWShowcase />;
 
   return (
     <Routes>
