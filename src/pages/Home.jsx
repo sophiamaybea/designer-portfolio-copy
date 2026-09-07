@@ -63,10 +63,7 @@ function Hero() {
       <figure className="hero-proof-art hero-proof-art-main" aria-hidden="true">
         <img src={ART.mountain} alt="" draggable="false" />
       </figure>
-      <figure className="hero-proof-art hero-proof-art-side" aria-hidden="true">
-        <img src={ART.skyline} alt="" draggable="false" />
-      </figure>
-
+      
       <nav className="hero-route-index" aria-label="Quick routes">
         <span>OPEN:</span>
         <Link to="/courses">COURSES ↗</Link>
@@ -98,7 +95,7 @@ function WorkChapter() {
         </div>
         <div className="proof-art-stage">
           <span className="proof-art-number" aria-hidden="true">01</span>
-          <img src={ART.walkers} alt="Two hand-drawn figures walking" className="settle-art proof-walkers" />
+          <img src={ART.walkers} alt="Two hand-drawn figures walking" className="settle-art proof-walkers" loading="lazy" decoding="async" />
           <p className="proof-caption">DRAWING / BEA SOPHIA</p>
         </div>
       </div>
@@ -125,7 +122,7 @@ function CoursesChapter() {
               <p>{course.text}</p>
             </div>
             <div className="proof-course-image" aria-hidden="true">
-              <img src={course.art} alt="" className="settle-art" />
+              <img src={course.art} alt="" className="settle-art" loading="lazy" decoding="async" />
             </div>
             <Link to="/courses" className="proof-course-open" aria-label={`Open ${course.title}`}>
               OPEN ↗
@@ -145,7 +142,7 @@ function JournalChapter() {
       <div className="proof-journal-grid">
         <div className="proof-journal-image">
           <span className="proof-art-number" aria-hidden="true">PG</span>
-          <img src={ART.tudor} alt="Ink and wash portrait illustration by Bea Sophia" className="settle-art" />
+          <img src={ART.tudor} alt="Ink and wash portrait illustration by Bea Sophia" className="settle-art" loading="lazy" decoding="async" />
         </div>
         <div className="proof-journal-copy">
           <p className="proof-index-note">INDEPENDENT LITERARY JOURNAL</p>
@@ -174,7 +171,7 @@ function FinalChapter() {
           <Link to="/contact" className="world-button world-button-outline">GET IN TOUCH <span>↗</span></Link>
         </div>
       </div>
-      <img src={ART.skyline} alt="" className="settle-art proof-final-skyline" aria-hidden="true" />
+      <img src={ART.skyline} alt="" className="settle-art proof-final-skyline" aria-hidden="true" loading="lazy" decoding="async" />
     </section>
   );
 }
