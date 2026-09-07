@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import InteractivePebbles from "@/components/home/InteractivePebbles";
 import ScrollCinema from "@/components/home/ScrollCinema";
+import "@/styles/proof-world.css";
 
 const ART = {
   mountain: "/art/mountain.png",
