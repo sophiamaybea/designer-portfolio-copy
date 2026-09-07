@@ -1,0 +1,778 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+Condensed:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500&display=swap');
+
+:root {
+  --paper: #f5f6f2;
+  --paper-soft: #ffffff;
+  --ink: #0b0d10;
+  --blue: #1647ff;
+  --blue-soft: #6f8aff;
+  --line: rgba(11, 13, 16, 0.18);
+  --quiet: rgba(11, 13, 16, 0.63);
+  --font-display: 'IBM Plex Sans Condensed', Arial Narrow, sans-serif;
+  --font-body: 'Source Serif 4', Georgia, serif;
+  --font-mono: 'IBM Plex Mono', monospace;
+}
+
+html,
+body {
+  background: var(--paper) !important;
+}
+
+body {
+  background-image: none !important;
+  font-family: var(--font-body);
+}
+
+body::before,
+body::after {
+  display: none !important;
+}
+
+.bea-home,
+.world-page,
+.bea-footer,
+.mobile-world-menu {
+  background: var(--paper);
+}
+
+.bea-nav {
+  background: rgba(245, 246, 242, 0.92);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--line);
+}
+
+.bea-brand-mark {
+  border-radius: 50%;
+  border-color: var(--blue);
+}
+
+.bea-brand-mark::after {
+  background: var(--paper);
+}
+
+.bea-nav-links a,
+.bea-nav-contact,
+.bea-nav-connect,
+.bea-menu-button,
+.bea-brand {
+  font-family: var(--font-mono);
+}
+
+.proof-world {
+  background: var(--paper);
+  color: var(--ink);
+  overflow: clip;
+}
+
+.proof-hero {
+  min-height: 100svh;
+  padding: 8.5rem 2rem 2.25rem;
+  display: block;
+  border-bottom: 1px solid var(--line);
+  background: var(--paper);
+}
+
+.proof-hero::before,
+.proof-hero::after {
+  display: none;
+}
+
+.proof-grid {
+  position: absolute;
+  inset: 70px 0 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(to right, rgba(11,13,16,0.08) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(11,13,16,0.05) 1px, transparent 1px);
+  background-size: 12.5vw 100%, 100% 25vh;
+  mask-image: linear-gradient(to bottom, black 0%, black 76%, transparent 100%);
+}
+
+.proof-hero-copy {
+  position: absolute;
+  z-index: 9;
+  left: 2rem;
+  top: 18%;
+  width: min(58vw, 880px);
+  text-align: left;
+  pointer-events: none;
+}
+
+.proof-hero-copy .eyebrow {
+  width: min(520px, 100%);
+  margin: 0 0 1.2rem;
+  color: var(--blue);
+}
+
+.proof-hero-copy h1 {
+  display: block;
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(7rem, 16vw, 16rem);
+  font-weight: 500;
+  line-height: 0.64;
+  letter-spacing: -0.075em;
+  text-transform: uppercase;
+  text-align: left;
+  text-shadow: none;
+}
+
+.proof-hero-copy h1 span {
+  display: block;
+  margin: 0 !important;
+}
+
+.proof-hero-copy h1 span:last-child {
+  margin-left: 0.28em !important;
+}
+
+.proof-hero-copy .hero-intro {
+  width: min(540px, 82%);
+  margin: 2rem 0 0 0.18rem;
+  font-family: var(--font-body);
+  font-size: clamp(1.05rem, 1.6vw, 1.45rem);
+  line-height: 1.38;
+}
+
+.hero-proof-art {
+  position: absolute;
+  margin: 0;
+  pointer-events: none;
+  user-select: none;
+}
+
+.hero-proof-art img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.hero-proof-art-main {
+  z-index: 3;
+  width: min(42vw, 620px);
+  height: min(44vw, 640px);
+  right: 6vw;
+  bottom: 0;
+  transform: rotate(2.5deg);
+}
+
+.hero-proof-art-side {
+  z-index: 2;
+  width: min(19vw, 280px);
+  height: min(24vw, 320px);
+  right: 1.4rem;
+  top: 12%;
+  opacity: 0.48;
+}
+
+.hero-route-index {
+  position: absolute;
+  z-index: 20;
+  left: 2rem;
+  bottom: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-family: var(--font-mono);
+  font-size: 0.57rem;
+  letter-spacing: 0.11em;
+}
+
+.hero-route-index > span {
+  color: var(--quiet);
+}
+
+.hero-route-index a {
+  color: var(--ink);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+}
+
+.hero-route-index a:hover,
+.hero-route-index a:focus-visible {
+  color: var(--blue);
+  border-bottom-color: currentColor;
+}
+
+.proof-scroll-cue {
+  z-index: 20;
+  right: 2rem;
+  bottom: 1.45rem;
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  background: var(--paper);
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  font-size: 0.48rem;
+}
+
+.proof-scroll-cue > span:last-child {
+  font-size: 0.8rem;
+}
+
+.proof-scroll-cue .scroll-cue-line {
+  display: none;
+}
+
+.pebble-field {
+  inset: 70px 0 0;
+  z-index: 8;
+  background: transparent;
+}
+
+.pebble-field::before {
+  display: none;
+}
+
+.pebble-instruction {
+  left: auto;
+  right: 2rem;
+  bottom: 5.2rem;
+  transform: none;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.2rem;
+  text-align: right;
+  color: rgba(11, 13, 16, 0.5);
+}
+
+.pebble-instruction span + span::before {
+  display: none;
+}
+
+.glass-pebble-label {
+  border-radius: 0;
+  background: var(--paper-soft);
+  border-color: var(--line);
+  box-shadow: 3px 3px 0 rgba(22, 71, 255, 0.16);
+}
+
+.proof-chapter,
+.proof-final {
+  position: relative;
+  min-height: 100svh;
+  padding: clamp(6.5rem, 9vw, 10rem) 2rem;
+  overflow: hidden;
+  background: var(--paper);
+  transform-style: flat;
+  perspective: none;
+}
+
+.proof-rule {
+  position: absolute;
+  top: 0;
+  left: 2rem;
+  right: 2rem;
+  height: 1px;
+  background: var(--ink);
+  opacity: 0.26;
+}
+
+.proof-label {
+  justify-content: flex-start;
+  color: var(--blue);
+  max-width: 1380px;
+  margin: 0 auto;
+}
+
+.chapter-dot {
+  border-radius: 50%;
+}
+
+.proof-two-column,
+.proof-journal-grid {
+  width: min(100%, 1380px);
+  margin: 5rem auto 0;
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(360px, 0.9fr);
+  gap: clamp(3rem, 8vw, 9rem);
+  align-items: center;
+}
+
+.proof-statement h2,
+.proof-section-heading h2,
+.proof-journal-copy h2,
+.proof-final-copy h2 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: -0.055em;
+  line-height: 0.86;
+}
+
+.proof-statement h2 {
+  max-width: 900px;
+  font-size: clamp(4.5rem, 8.4vw, 9.5rem);
+}
+
+.proof-index-note,
+.proof-caption,
+.proof-course-number,
+.proof-course-open {
+  font-family: var(--font-mono);
+  font-size: 0.58rem;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+}
+
+.proof-index-note {
+  margin: 0 0 1.35rem;
+  color: var(--blue);
+}
+
+.proof-body-copy {
+  max-width: 620px;
+  margin: 2.3rem 0 2rem;
+  font-size: clamp(1.02rem, 1.3vw, 1.22rem);
+  line-height: 1.72;
+  color: var(--quiet);
+}
+
+.proof-art-stage,
+.proof-journal-image {
+  position: relative;
+  min-height: 620px;
+  display: grid;
+  place-items: center;
+  border-left: 1px solid var(--line);
+}
+
+.proof-art-number {
+  position: absolute;
+  z-index: 0;
+  left: 4%;
+  top: 3%;
+  font-family: var(--font-display);
+  font-size: clamp(8rem, 17vw, 18rem);
+  line-height: 0.8;
+  letter-spacing: -0.07em;
+  color: rgba(22, 71, 255, 0.08);
+}
+
+.proof-walkers,
+.proof-journal-image img {
+  position: relative;
+  z-index: 2;
+  width: min(92%, 650px);
+  max-height: 650px;
+  object-fit: contain;
+  filter: drop-shadow(0 24px 28px rgba(11, 13, 16, 0.08));
+}
+
+.proof-caption {
+  position: absolute;
+  left: 1rem;
+  bottom: 1rem;
+  color: var(--quiet);
+}
+
+.proof-chapter-courses {
+  background: #eef0ec;
+}
+
+.proof-section-heading {
+  width: min(100%, 1380px);
+  margin: 4rem auto 4rem;
+  display: grid;
+  grid-template-columns: minmax(0, 1.25fr) minmax(300px, 0.75fr);
+  gap: clamp(2rem, 7vw, 8rem);
+  align-items: end;
+}
+
+.proof-section-heading h2 {
+  font-size: clamp(4.3rem, 7.2vw, 8rem);
+}
+
+.proof-section-heading > p {
+  margin: 0;
+  max-width: 520px;
+  color: var(--quiet);
+  line-height: 1.7;
+  font-size: 1.02rem;
+}
+
+.proof-course-list {
+  width: min(100%, 1380px);
+  margin: 0 auto;
+  border-top: 1px solid var(--ink);
+}
+
+.proof-course-row {
+  position: relative;
+  min-height: 220px;
+  display: grid;
+  grid-template-columns: 64px minmax(0, 1.2fr) minmax(180px, 0.45fr) 80px;
+  gap: 2rem;
+  align-items: center;
+  padding: 1.35rem 0;
+  border-bottom: 1px solid rgba(11, 13, 16, 0.35);
+}
+
+.proof-course-number {
+  align-self: start;
+  padding-top: 0.35rem;
+  color: var(--blue);
+}
+
+.proof-course-copy h3 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(2.7rem, 5vw, 5.7rem);
+  font-weight: 500;
+  line-height: 0.86;
+  letter-spacing: -0.05em;
+  text-transform: uppercase;
+}
+
+.proof-course-copy p {
+  max-width: 600px;
+  margin: 1rem 0 0;
+  color: var(--quiet);
+  line-height: 1.62;
+}
+
+.proof-course-image {
+  height: 180px;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  border-left: 1px solid var(--line);
+  border-right: 1px solid var(--line);
+}
+
+.proof-course-image img {
+  width: 90%;
+  height: 92%;
+  object-fit: contain;
+}
+
+.proof-course-open {
+  justify-self: end;
+  color: var(--ink);
+  text-decoration: none;
+  border-bottom: 1px solid currentColor;
+  padding-bottom: 0.2rem;
+}
+
+.proof-course-open:hover,
+.proof-course-open:focus-visible {
+  color: var(--blue);
+}
+
+.proof-chapter-journal {
+  background: var(--paper);
+}
+
+.proof-journal-grid {
+  grid-template-columns: minmax(360px, 0.92fr) minmax(0, 1.08fr);
+}
+
+.proof-journal-image {
+  border-left: 0;
+  border-right: 1px solid var(--line);
+}
+
+.proof-journal-copy h2 {
+  font-size: clamp(4.2rem, 7.2vw, 8.2rem);
+}
+
+.proof-journal-copy > p:not(.proof-index-note) {
+  max-width: 600px;
+  margin: 2rem 0;
+  color: var(--quiet);
+  font-size: 1.05rem;
+  line-height: 1.72;
+}
+
+.proof-final {
+  min-height: 92svh;
+  display: grid;
+  align-items: center;
+  background: var(--blue);
+  color: #fff;
+}
+
+.proof-final .proof-rule {
+  background: rgba(255,255,255,0.62);
+}
+
+.proof-final-copy {
+  position: relative;
+  z-index: 4;
+  width: min(100%, 1380px);
+  margin: 0 auto;
+}
+
+.proof-final-copy .eyebrow {
+  color: rgba(255,255,255,0.72);
+}
+
+.proof-final-copy h2 {
+  max-width: 1000px;
+  font-size: clamp(5rem, 10vw, 11rem);
+}
+
+.proof-final-copy > p {
+  max-width: 540px;
+  margin: 2rem 0 2.5rem;
+  font-size: 1.15rem;
+  line-height: 1.55;
+  color: rgba(255,255,255,0.82);
+}
+
+.proof-final .world-button {
+  background: #fff;
+  color: var(--blue);
+  border-color: #fff;
+}
+
+.proof-final .world-button-outline {
+  background: transparent;
+  color: #fff;
+}
+
+.proof-final .world-button:hover,
+.proof-final .world-button:focus-visible {
+  background: var(--ink);
+  color: #fff;
+  border-color: var(--ink);
+}
+
+.proof-final-skyline {
+  position: absolute;
+  z-index: 1;
+  right: -2vw;
+  bottom: -10%;
+  width: min(55vw, 760px);
+  opacity: 0.22;
+  filter: brightness(0) invert(1);
+}
+
+.world-link,
+.world-button {
+  font-family: var(--font-mono);
+}
+
+.world-button {
+  border-radius: 0;
+}
+
+.page-hero h1,
+.course-page-card h2,
+.about-copy h2,
+.journal-manifesto h2,
+.footer-big-name {
+  font-family: var(--font-display);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: -0.055em;
+}
+
+.page-hero h1 {
+  line-height: 0.78;
+}
+
+.footer-big-name {
+  line-height: 0.66;
+}
+
+.footer-kicker,
+.about-copy p,
+.journal-manifesto p,
+.page-hero p,
+.course-description {
+  font-family: var(--font-body);
+}
+
+@media (max-width: 980px) {
+  .proof-hero-copy {
+    width: 72vw;
+  }
+
+  .hero-proof-art-main {
+    width: min(56vw, 580px);
+    right: 0;
+  }
+
+  .proof-two-column,
+  .proof-journal-grid,
+  .proof-section-heading {
+    grid-template-columns: 1fr;
+  }
+
+  .proof-art-stage,
+  .proof-journal-image {
+    min-height: 470px;
+    border-left: 0;
+    border-right: 0;
+    border-top: 1px solid var(--line);
+  }
+
+  .proof-course-row {
+    grid-template-columns: 52px minmax(0, 1fr) 150px 64px;
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 700px) {
+  .proof-hero {
+    min-height: 100svh;
+    padding: 6.5rem 1rem 5.5rem;
+  }
+
+  .proof-grid {
+    inset: 62px 0 0;
+    background-size: 25vw 100%, 100% 20vh;
+  }
+
+  .proof-hero-copy {
+    left: 1rem;
+    top: 18%;
+    width: calc(100% - 2rem);
+  }
+
+  .proof-hero-copy h1 {
+    font-size: clamp(5.8rem, 27vw, 9rem);
+    line-height: 0.65;
+  }
+
+  .proof-hero-copy h1 span:last-child {
+    margin-left: 0.08em !important;
+  }
+
+  .proof-hero-copy .hero-intro {
+    width: 76%;
+    margin-top: 1.3rem;
+    font-size: 1rem;
+    line-height: 1.4;
+  }
+
+  .hero-proof-art-main {
+    width: 74vw;
+    height: 54vw;
+    right: -11vw;
+    bottom: 12%;
+    opacity: 0.72;
+  }
+
+  .hero-proof-art-side {
+    display: none;
+  }
+
+  .hero-route-index {
+    left: 1rem;
+    right: 4.6rem;
+    bottom: 1.25rem;
+    gap: 0.65rem;
+    flex-wrap: wrap;
+    font-size: 0.5rem;
+  }
+
+  .proof-scroll-cue {
+    right: 1rem;
+    bottom: 0.9rem;
+    width: 50px;
+    height: 50px;
+  }
+
+  .pebble-instruction {
+    display: none;
+  }
+
+  .glass-pebble-body {
+    filter: drop-shadow(0 12px 14px rgba(22, 44, 104, 0.15));
+  }
+
+  .proof-chapter,
+  .proof-final {
+    min-height: auto;
+    padding: 5.5rem 1rem;
+  }
+
+  .proof-rule {
+    left: 1rem;
+    right: 1rem;
+  }
+
+  .proof-two-column,
+  .proof-journal-grid {
+    margin-top: 3rem;
+    gap: 2.5rem;
+  }
+
+  .proof-statement h2,
+  .proof-journal-copy h2 {
+    font-size: clamp(3.8rem, 18vw, 6rem);
+  }
+
+  .proof-section-heading {
+    margin: 3rem auto;
+  }
+
+  .proof-section-heading h2 {
+    font-size: clamp(3.6rem, 17vw, 5.8rem);
+  }
+
+  .proof-art-stage,
+  .proof-journal-image {
+    min-height: 360px;
+  }
+
+  .proof-art-number {
+    font-size: 34vw;
+  }
+
+  .proof-course-row {
+    min-height: 0;
+    grid-template-columns: 38px minmax(0, 1fr) 58px;
+    gap: 0.8rem;
+    padding: 1.25rem 0;
+  }
+
+  .proof-course-copy h3 {
+    font-size: clamp(2.5rem, 12.5vw, 4.2rem);
+  }
+
+  .proof-course-copy p {
+    font-size: 0.92rem;
+  }
+
+  .proof-course-image {
+    display: none;
+  }
+
+  .proof-course-open {
+    font-size: 0.48rem;
+  }
+
+  .proof-final {
+    min-height: 82svh;
+  }
+
+  .proof-final-copy h2 {
+    font-size: clamp(4.8rem, 22vw, 7.4rem);
+  }
+
+  .proof-final-skyline {
+    width: 90vw;
+    right: -20vw;
+    bottom: -2%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .proof-world *,
+  .proof-world *::before,
+  .proof-world *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
